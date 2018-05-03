@@ -1,0 +1,84 @@
+/*===============
+      RATE
+================*/
+.rate-from-to-text {font-size: 14px;}
+.chart-general-wrapper {
+    margin-top: 20px;
+}
+.chart-wrapper {
+    border-right: 1px solid #D9DBDE;
+    padding: 20px; 
+
+    &:first-child() {padding-left: 15px;}
+    &:last-child() {
+        border-right: 0;
+        padding-right: 15px;
+    }
+}
+.initial-chart-wrapper {
+    border-bottom: 1px solid #D9DBDE;
+    margin-bottom: 10px;
+    h3 {
+        color: #4D4D4D;
+        font-size: 16px;
+        margin: -16px 0 30px;
+    }
+}
+.info-chart-wrapper > div {
+    border-right: 1px solid #D9DBDE;
+    margin-top: 20px;
+    &:last-child() {border-right: 0;}
+    > span {
+        display: block;
+        font-size: 14px;
+    }
+    .number-rate {
+        font-size: 36px;
+        font-weight: 100;
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+}
+.dropdown-ellipsis {
+    .ui-dropdown-label {
+        overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 230px;
+    }
+}
+
+// CHARTS
+.c3-target-Net path {
+    fill: rgb(22, 189, 119)!important;
+}
+.c3-target-remaining path {
+    fill: rgb(237, 237, 237)!important;
+}
+.c3-chart-arc path {
+    stroke: none;
+}
+
+#netDonutChart, #grossDonutChart {
+    .c3-axis.c3-axis-y {
+        opacity: 1!important;
+        visibility: visible!important;
+        color: rgb(0, 190, 117);
+        > g.tick {
+            opacity: 0!important;
+            visibility: hidden!important;
+        }
+        path.domain {
+            opacity: 0!important;
+            visibility: hidden!important;
+        }
+    }
+}
+#netDonutChart,
+#grossDonutChart {
+    defs {
+        display: none;
+        opacity: 0;
+    }
+}

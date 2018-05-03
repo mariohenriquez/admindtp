@@ -1,0 +1,46 @@
+/*================
+      Slider
+=================*/
+.ui-slider-horizontal {
+    height: 2px;
+    background: #D8DBDD;
+    position: relative;
+    text-align: left;
+    margin-bottom: 12px;
+    .ui-slider-range {
+        top: -1px;
+        height: 3px;
+        position: absolute;
+        display: block;
+        background: #455D6F;
+        z-index: 1;
+    }
+    .ui-slider-handle {
+        top: -5px;
+        margin-left: -0.1px;
+        position: absolute;
+        background: #fff;
+        border-radius: 150px;
+        width: 11px;
+        height: 11px;
+        z-index: 2;
+        cursor: default;
+        -ms-touch-action: none;
+        touch-action: none;
+        box-shadow: 0 6px 8px 0 rgba(0, 0, 0, 0.10);
+    }
+}
+.disabled {
+    .ui-slider-horizontal{
+        opacity: 0.8;
+        pointer-events: none;
+    }    
+    .ui-slider-range {background: #718698;}
+}
+.hour-text {
+  font-size: 0.9em;
+  display: block;
+  font-weight: 300;
+  color: #777777;
+  margin-bottom: 8px;
+}

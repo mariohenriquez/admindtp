@@ -1,0 +1,35 @@
+/*================
+    inputSwitch
+=================*/
+.custom-control-checkbox {
+  display: inline-block;
+  .custom-control {margin: 0 0;}
+  .custom-control-indicator {
+    @include border-radius(2px);
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    background: #FFF;
+    border: 1px solid #DDDDDD;
+    top: 1px;
+  }
+  .custom-control-description {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 0.8em;
+    color: #777777;
+    margin-top: -1px;
+    margin-left: -1px;
+  }
+  .custom-control-input:checked~.custom-control-indicator {
+    border: 1px solid #00BE75;
+    background-color: #00BE75;
+    color: #FFFFFF;
+  }
+  .custom-checkbox .custom-control-input:checked~.custom-control-indicator {
+    background-size: 9px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .custom-control-input:focus~.custom-control-indicator {@include box-shadow(none);}
+}

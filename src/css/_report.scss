@@ -1,0 +1,259 @@
+/*===============
+     REPORTS
+================*/
+.reports-wrapper {
+  .input-search {
+    margin-right: 15px;
+    width: 340px;
+  }
+  .multiselect-wrapper {vertical-align: top;}
+  .reservations-list-wrapper li {padding: 17px 21px 5px;}
+  .data-reservation {width: initial;}
+  .footer-reservation {
+    span {
+      font-weight: 300;
+    }
+    b {
+      color: $brown-general;
+      font-size: 13px;
+      font-weight: 500;
+    }
+  }
+}
+
+/*===============
+     REPORT
+================*/
+.my-report-wrapper {
+    .header-main-wrapper {
+        margin-bottom: 15px;
+        .btn {font-size: 13px;}
+    }
+    .general-report-content {
+        display: table;
+        width: 100%;
+    }
+    .left-report-content {
+        @include widthCalc(100%, 340px);
+        background: #FFF;
+        display: table-cell;
+    }
+    .center-report-content {
+        display: table-cell;
+        width: 20px;
+    }
+    .right-report-content {
+        background: #FFF;
+        display: table-cell;
+        width: 320px;
+    }
+    .body-wrapper {padding: 11px 25px 15px;}
+    .header-border-bottom {
+        margin: 0 0 16px;
+        .lb-dark {
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 6px;
+        }
+        .btn {
+            margin-top: 1px;
+            margin-right: 2px;
+        }
+    }
+    .lb-dark {
+        display: block;
+        color: #404040;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    .lb-light {
+        display: block;
+        color: #B5B5B5;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 0;
+    }
+    .data-report-wrapper {
+        overflow: hidden;
+        margin-bottom: 20px;
+        &.no-overflow {overflow: initial;}
+        .data-report-list li {
+            margin-bottom: 22px;
+            span {
+                color: #4D4D4D;
+                display: block;
+                font-size: 14px;
+                font-weight: 300;
+                margin-top: -5px;
+                &.open {
+                    color: $upcomingReservation;
+                    border: 1px solid $upcomingReservation;
+                }
+                &.completed,
+                &.accepted {
+                    color: $activeReservation;
+                    border: 1px solid $activeReservation;
+                }
+                &.status {
+                    border-radius: 3px;
+                    display: inline-block;
+                    font-size: 12px;
+                    font-weight: 600;
+                    padding: 2px 10px;
+                    position: relative;
+                    top: 3px;
+                    &.finished {
+                        border: 1px solid $finishedReservation;
+                        color: $finishedReservation;
+                    }
+                    &.completed {
+                        border: 1px solid $activeReservation;
+                        color: $activeReservation;
+                    }
+
+                    &.upcoming {
+                        border: 1px solid $upcomingReservation;
+                        color: $upcomingReservation;
+                    }
+                }
+                > small {font-size: 14px;}
+            }
+        }
+        .history-text {
+            font-size: 14px;
+            font-weight: 300;
+            display: block;
+        }
+        
+    }
+    .reported-car-list {
+        margin-top: 4px;
+        li {
+            float: left;
+            margin-left: 17px;
+            &:first-child {margin-left: 0;}
+        }
+        img {
+            height: auto;
+            width: 110px;
+        }
+    }
+    .additional-info-text {
+        background: #FAFAFA;
+        border-left: 4px solid #E8E8E8;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 11px 16px 15px;
+    }
+    .reservations-list-wrapper {
+        height: 500px;
+        overflow-y: scroll;
+        li {
+            border: 1px solid #D8DBDD;
+            border-left: 4px solid #3B4F5B;
+            padding: 14px 15px 12px 10px;
+            &.open, &.accepted {border-left: 4px solid $upcomingReservation;}
+            &.completed {border-left: 4px solid $activeReservation;}
+        }
+    }
+    .header-report {
+        overflow: hidden;
+        margin-bottom: 4px;
+        h6 {    
+            color: $brown-general;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 0px;
+            margin-top: 6px;
+        }
+        .btn {
+            font-size: 13px;
+            padding: 5px 10px;
+        }
+    }
+    .related-report-list {
+        @extend .header-report;
+        > div {
+            overflow: hidden;
+            margin-bottom: -2px;
+        }
+        label {
+            color: $brown-general;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+        span {
+            color: $brown-general;
+            font-size: 12px;
+            font-weight: 300;
+        }
+    }
+    table thead th,
+    .table td, 
+    .table th {
+        border: 0;
+        padding: 0px 12px;
+        &:first-child {padding-left: 0;}
+    }
+    .table th {
+        font-size: 12px;
+    }
+    .table td {
+        font-size: 14px;
+        font-weight: 300;
+        text-transform: uppercase;
+    }
+    .successfully-table {margin-bottom: 35px;}
+    .drag-drop-wrapper.drag-drop-images .drag-text {
+        width: 460px;
+        > img {margin-bottom: 15px;}
+    }
+    .ui-fileupload-content {
+        background: #FFF;
+        border: 0;
+        overflow: hidden;
+        position: relative;
+        &:before {
+            content: "";
+            position: absolute;
+            border: 5px dashed #D8DBDD;
+            top: -4px;
+            bottom: -4px;
+            left: -4px;
+            right: -4px;
+        }
+    }
+}
+.new-report-general-content {
+    .lb-light {margin-bottom: 6px;}
+    .ui-dropdown {
+        height: 34px;
+        line-height: 1.55;
+    }
+    .ui-inputtext {
+        @include widthCalc(100%, 10px);
+        color: $brown-general;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .fields-report-content > div {margin-bottom: 14px;}
+    .drag-drop-wrapper.drag-drop-images {
+        margin: 0 0;
+        padding: 30px 0 40px;
+    }
+    .data-report-wrapper {
+        margin-bottom: 0;
+        > .col-sm-6 {
+            margin-bottom: 15px;
+            &:nth-child(even) {padding-left: 33px;}
+            &:nth-child(odd) {padding-right: 33px;}
+        }
+    }
+    .custom-control-radio .custom-control-description {
+        font-size: 14px;
+        margin-left: -1px;
+    }
+}

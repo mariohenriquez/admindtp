@@ -1,0 +1,158 @@
+/*=======================================
+    input File Upload - DragDrop File
+========================================*/
+image-drop[ng-reflect-box="true"]{
+    display: inline-block;
+    vertical-align: top;
+}
+.ui-fileupload-content {
+    @include border-radius(2px);
+    @include transition(border-color .3s);
+    background: #FFF;
+    border: 2px dashed #ADAEAF;
+    padding: 40px 0 47px;
+}
+
+.ui-fileupload-img {
+    margin: 0 20px;
+    position: relative;
+    height: 160px;
+    margin-bottom: 20px;
+
+    img {
+        @include border-radius(3px);
+        @include transition(opacity 2s);
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        opacity: .6;
+        width: auto;
+        &.no-opacity {opacity: 1;}
+    }
+    .float-xs-right{
+        position: absolute;
+        top: 0;
+        right: -3px;
+    }
+    .close-lot {
+        @include border-radius(150px);
+        @include box-shadow(0 3px 3px 0 rgba(0, 0, 0, 0.4));
+        background: #FFF;
+        border: 1px solid #F1F1F1;
+        height: 15px;
+        text-align: center;
+        width: 5px;
+        padding: 10px;
+    }
+    .line-close {
+        right: 4px;
+        width: 12px;
+    }
+} 
+
+.add-plus-wrapper {
+    background: url("../images/add-plus-ico.svg") no-repeat center;
+    background-size: 40px;
+    cursor: pointer;
+    width: 160px;
+    height: 73px;
+}
+
+.drag-text {
+    margin: 0 auto;
+    text-align: center;
+    width: 215px;
+    h6 {
+        color: $drag-color-text;
+        font-size: 16px;
+        margin: 7px 0;
+        font-weight: 600;
+    }
+    span {
+        color: $drag-color-text;
+        display: block;
+        font-size: 13px;
+    }
+}
+.drag-drop-wrapper{
+    position: relative;
+    margin-bottom: 15px;
+    input[type="file"] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+    &.drag-drop-images {
+        margin: 0 20px;
+        .drag-text {
+            width: 360px;
+            > img {
+                display: inline-block;
+                margin-bottom: 7px;
+                height: auto;
+                vertical-align: middle;
+                width: 50px;
+            }
+            h6 {font-size: 18px;}
+        }
+        .image-attached {
+            height: 168px;
+            width: 162px;
+        }
+    }
+}
+.ui-fileupload-row {
+    @include border-radius(2px);
+    background: #FAFAFA;
+    border: 1px solid #D8DBDD;
+    overflow: hidden;
+    padding: 15px 22px;
+    position: relative;
+    margin-bottom: 12px;
+}
+.ui-fileupload-row>div {
+    float: left;
+    line-height: 1;
+    margin-right: 15px;
+    &.float-xs-right {margin-right: -15px;}
+    b {
+        display: block;
+        font-size: 16px;
+    }
+    span {
+        color: #B5B5B5;
+        font-size: 13px;
+    }
+    img {
+        height: auto;
+        width: 36px;
+    }
+}
+
+.img-show-wrapper {
+    margin-bottom: 20px;
+    height: 160px;
+    margin-right: 20px;
+    display: inline-flex;
+    
+    img{
+        display: inline-block;
+        height: 100%;
+        width: auto;
+    }
+}
+.name-file-wrapper {
+    @include widthCalc(100%, 121px);
+}
+
+// IMAGE-ORIENTATION
+img {
+    &.rotation-3 {@include rotate(180deg);}
+    &.rotation-6 {@include rotate(90deg); margin-top: 25px;}
+    &.rotation-8 {@include rotate(-90deg); margin-top: 25px;}
+}

@@ -1,0 +1,38 @@
+/*================
+    inputSwitch
+=================*/
+.custom-control-radio {
+  display: inline-block;
+  vertical-align: middle;
+  .custom-control-indicator {
+    width: 14px;
+    height: 14px;
+    background: #FFF;
+    border: 1px solid #D8DBDD;
+    top: -1px;
+  }
+  .custom-control-description {
+    font-size: 0.8em;
+    color: #757575;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: -3px;
+    margin-right: 3px;
+  }
+  .custom-control-input:focus~.custom-control-indicator {
+    @include box-shadow(none);
+  }
+  .custom-control-input:checked~.custom-control-indicator{
+    @include box-shadow(inset 0 0 0 2px #FFF);
+    background: #00BE75;
+  }
+  .custom-control-input:active~.custom-control-indicator {
+    background: #FFF;
+  }
+  .custom-control {
+    display: block;
+    line-height: 0.8;
+    margin-bottom: 0;
+  }
+  .custom-control+.custom-control {margin: 8px 0 0 0;}
+}

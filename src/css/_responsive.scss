@@ -1,0 +1,84 @@
+/*================
+    Responsive
+=================*/
+@media all and (max-width: 1340px) {
+	.table-wrapper thead th {
+		padding: 12px 10px;
+		&:first-child{padding-left: 15px;}
+		&:last-child{padding-right: 15px;}
+
+	}
+	.table-wrapper tbody td {
+		padding: 12px 10px;
+		&:first-child{padding-left: 15px;}
+		&:last-child{padding-right: 15px;}
+	}
+	.time-wrapper {
+		clear: both;
+    width: 100%;
+    margin: 23px 0 0;
+	}
+	.last-wrapper {
+    position: absolute;
+    top: 16px;
+    right: 10px;
+	}
+}
+@media all and (max-width: 1024px) {
+	.table-special-wrapper tbody td:nth-child(2) {width: 120px;}
+}
+@media all and (max-width: 990px) {
+	header,
+	.main {min-width: 990px;}
+}
+@media all and (max-width: 960px) {
+	.table-wrapper {
+		thead th {
+			font-size: 11px;
+			padding: 12px 5px;
+			&:first-child{padding-left: 15px;}
+			&:last-child{padding-right: 15px;}
+		}
+		tbody td {
+			font-size: 15px;
+			padding: 12px 5px;
+			&:first-child{padding-left: 15px;}
+			&:last-child{
+				padding-right: 15px;
+				a {margin-left: 6px;}
+			}
+		}
+		.pso-sigla {display: block;}
+		.number-td {font-size: 24px;}
+		.name-td {font-size: 17px;}
+		.address-td {font-size: 14px;}
+	}
+	.time-wrapper {width: 100%;}
+	.custom-control-radio .custom-control {
+		display: inline-block;
+		vertical-align: top;
+		+ .custom-control {margin: 0 0;}
+	}
+	.week-btns {margin-top: 3px;}
+	.main-pane {min-width: 545px;}
+	.table-special-wrapper tbody td {
+		padding: 10px 5px;
+		&:nth-child(2) {width: 100px;}
+	}
+}
+@media all and (min-width: 992px){
+	.ui-fileupload-row.col-lg-6 {
+		@include widthCalc(50%, 10px);
+		margin: 0 20px 20px;
+		&:nth-child(even){margin-right: 0;}
+		&:nth-child(odd){margin: 0 0;}
+	}
+}
+@media	only screen and (-webkit-min-device-pixel-ratio: 1.3),
+	only screen and (-o-min-device-pixel-ratio: 13/10),
+	only screen and (min-resolution: 120dpi)
+	{
+		// body {
+    //   font-size: 0.9em;
+    // }
+	}

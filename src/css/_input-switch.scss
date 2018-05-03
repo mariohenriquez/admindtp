@@ -1,0 +1,72 @@
+/*================
+    inputSwitch
+=================*/
+.pricing-lot-wrapper {
+	.switch-wrapper {
+		top: 27px;
+	}
+}
+
+.switch-wrapper{
+  float: right;
+  position:relative;
+	width:34px;
+	z-index: 4;
+}
+
+.check-ios{visibility: hidden;}
+
+.switch-wrapper {
+  span{
+    @include border-radius(15px);
+    @include transition(all .5s ease);
+  	background-color:#e2e2e2;
+  	display:block;
+  	height:20px;
+  	width:34px;
+  	position: absolute;
+  	top:0;
+  	left:0;
+  	z-index:1;
+    &:after {
+      @include border-radius(14px);
+      @include transition(all .4s ease);
+    	background-color:#fff;
+    	content:'';
+    	display:block;
+    	height:18px;
+    	width:32px;
+    	position: absolute;
+    	top:1px;
+    	left:1px;
+    	z-index:2;
+    }
+  }
+  label{
+    @include border-radius(50%);
+    @include box-shadow(1px 1px 3px 0 rgba(0,0,0,0.3));
+    @include transition(all .4s ease);
+  	background: #fff;
+  	cursor: pointer;
+  	display: block;
+  	height: 18px;
+  	width: 18px;
+  	position: absolute;
+  	top:1px;
+  	left:1px;
+  	z-index:3;
+  }
+}
+
+.check-ios:checked {
+  ~ span {
+    background-color:#00BE75;
+    &:after {
+    	height:0;
+    	width:0;
+    	left:50%;
+    	top:50%;
+    }
+  }
+  + label {left: 15px;}
+}

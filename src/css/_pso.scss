@@ -1,0 +1,187 @@
+/*============
+    PSO's
+=============*/
+.pso-form  > .general-container{min-height: 500px;}
+.header-tab-border {
+    border-bottom: 1px solid #EAEAEA;
+    margin: 0 0 14px;
+    padding-bottom: 14px;
+    padding-left: 0;
+    h3 {
+        color: $brown-general;
+        font-size: 13px;
+        font-weight: 600;
+        margin: 0 0;
+    }   
+}
+.contact-tab-wrapper {
+    margin-bottom: 8px;
+    overflow: hidden;
+}
+contact + .link-add-new-content-wrapper {margin-top: -15px;}
+/*============
+    MORE - PSO's
+=============*/
+.download-wrapper{
+    text-align: center;
+    > a {
+        color: #00B767;
+        &:hover{
+            text-decoration: none;
+        }
+        > .img-download {
+            display: inline-block;
+            vertical-align: middle;
+            height: auto;
+            margin-bottom: 8px;
+            width: 20px;
+        }
+        small {
+            display: block;
+            color: #00B767;
+            font-size: 12px;
+        }
+    }
+}
+.paragraph-wrapper{
+    background: #FAFAFA;
+    border-left: 4px solid #E8E8E8;
+    padding: 11px 20px 13px;
+    p {
+        color: #484848;
+        font-size: 14px;
+        line-height: 20px;
+        margin: 0 0;
+    }
+}
+table.no-shadow{
+    @include box-shadow(none);
+    border: 1px solid #E9E9E9;
+    border-top: 0;
+    thead th:last-child {border-right: 1px solid #E9E9E9;}
+}
+.pso-detail-content {
+    margin: 0 0 24px;
+    .margin-special {margin-bottom: 11px;}
+    .form-group {
+        float: initial;
+        overflow: hidden;
+        margin-bottom: 3px;
+    }
+}
+.more-result-text{
+    color: $brown-general;
+    display: block;
+    font-size: 14px;
+    margin-top: -4px;
+}
+.icon-wrapper {
+    float: left;
+    margin-right: 11px;
+    text-align: center;
+    width: 17px;
+    i { 
+        color: #4D4D4D;
+        font-size: 22px;
+        position: relative;
+        top: 2px;
+    }
+    > img {
+        display: inline-block;
+        height: auto;
+        vertical-align: middle;
+        width: 100%;
+    }
+}
+.address-pso {
+    display: inline-block;
+    border-left: 1px solid #D8DBDD;
+    margin-left: 20px;
+    padding-bottom: 1px;
+    padding-left: 22px;
+    vertical-align: top;
+    margin-top: 8px;
+}
+.text-details-wrapper {
+    color: $brown-general;
+    float: left;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 3px;
+}
+.no-information-message {
+    color: #808080;
+    font-size: 14px;
+    margin: 100px auto;
+    text-align: center;
+    width: 193px;
+    img {
+        display: block;
+        height: auto;
+        margin: 0 auto 15px;
+    }
+    
+}
+/*===============
+ Payment Methods
+================*/
+.payment-content {
+    @include border-radius(2px);
+    background: #F3F3F3;
+    border: 1px solid #EEEEEE;
+    line-height: 1.7;
+    margin-bottom: 6px;
+    min-height: 54px;
+    padding: 8px 16px 9px 21px;
+    .d-inline-block {position: relative;}
+    svg {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+        &:hover + .tooltip {
+            opacity: 1;
+            z-index: 100;
+        }
+    }
+    h6 {
+        color: $brown-general;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 600;
+        margin-right: 4px;
+        vertical-align: -webkit-baseline-middle;
+    }
+    .form-control {display: inline-block;}
+    input[type='text'] {width: 220px;}
+    .switch-wrapper {margin-top: 6px;}
+    .error-secret-code {
+        display: inline-block;
+        font-size: 14px;
+        margin-left: 10px;
+    }
+}
+.tooltip {
+    @include transition(0.3s opacity ease);
+    display: block;
+    opacity: 0;
+    z-index: -1;
+    .tooltip-inner {
+        background-color: #3e3e3e;
+        font-size: 13px;
+        max-width: 100%;
+        padding: 6px 10px;
+        width: 275px;
+    }
+    &.top {
+        right: -120px;
+        top: -48px;     
+        .tooltip-inner:before {
+            bottom: -5px;
+            border-top-color: #3e3e3e;
+            border-width: 5px 5px 0;
+            content: "";
+            left: 50%;
+            margin-left: -5px;
+        }
+    }
+}

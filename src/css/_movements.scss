@@ -1,0 +1,264 @@
+/*===============
+    MOVEMENTS
+================*/
+
+// FINANCIAL
+.total-general-wrapper {
+    padding: 18px 15px;
+    margin-bottom: 20px;
+    .col-sm-3 {
+        text-align: center;
+        margin: -2px 0;
+    }
+    .border-right-silver {border-right: 1px solid #D9DBDE;}
+}
+.number-financial-movements {
+    color: #4D4D4D;
+    font-size: 24px;
+    font-weight: 300;
+    display: block;
+    margin-bottom: -3px;
+    &.green-text {color: #00BE75;}
+}
+.text-financial-movements {
+    color: #4D4D4D;
+    font-size: 12px;
+    font-weight: 400;
+    display: block;
+}
+.search-control-wrapper {
+    height: 36px;
+    margin-bottom: 23px;
+    h4 {
+        font-size: 13px;
+        font-weight: 600;
+        display: inline-block;
+        margin-right: 14px;
+        margin-bottom: 0;
+        vertical-align: -webkit-baseline-middle;
+    }
+}
+.select-pso-dropdown div.ui-widget {
+    height: 36px;
+    line-height: 2;
+}
+.financial-table {
+    table-layout: fixed;
+     thead th {
+        font-size: 11px;
+        padding: 11px 13px;
+        width: 10%;
+        &:first-child {width: 70px;}
+    }
+    tbody {
+        tr:nth-child(even){
+            .ref-number-wrapp:hover,
+            .parking-lot-wrapp:hover {background: #FFF;}
+        }
+        tr:nth-child(odd){
+            .ref-number-wrapp:hover,
+            .parking-lot-wrapp:hover {background: #F6F6F6;}
+        }
+        td {
+            font-size: 15px;
+            padding: 10px 13px;
+            width: 10%;
+            &:first-child {width: 70px;}
+        }
+    }
+    .total-price-paid {
+        color: #00BE75;
+        font-weight: 600;
+        &.reservation-canceld-price {
+            color: #E66666;
+            text-decoration: line-through;
+        }
+    }
+    td {
+        position: relative;
+        > a {
+            color: #4D4D4D;
+            text-decoration: underline;
+        }
+    }
+    .res-type-wrapp {width: 152px;}
+}
+.ref-number-wrapp,
+.parking-lot-wrapp {
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 5px;
+    position: relative;
+    text-overflow: ellipsis;
+    width: 110px;
+    white-space: nowrap;
+    &:hover {
+        width: auto;
+        z-index: 1;
+    }
+}
+.financial-modal {
+    .multiselect-wrapper {display: block;}
+    .datepicker-wrapper .datepicker-select input.ui-inputtext {height: 30px;}
+    .col-sm-6 {
+        &:first-child {padding-right: 8px;}
+        &:last-child {padding-left: 8px;}
+    }
+    .modal-body {
+        padding-bottom: 10px;
+        .form-group {margin-bottom: 8px;}
+    }
+    .modal-footer {
+        .btn {
+            font-size: 13px;
+            padding: 9px 16px;
+        }
+    }
+    .custom-control-checkbox {margin-top: 6px;}
+}
+.select-dropdown-with-border {
+    position: relative;
+    .ui-multiselect {  
+        border: 1px solid #D8DBDD;      
+    }
+    .all-text {
+        background: -webkit-linear-gradient(top, #ffffff 0%, #f6f6f6 100%);
+        background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 100%);
+        position: absolute;
+        left: 1px;
+        color: #4d4d4d;
+        cursor: pointer;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 400;
+        top: 1px;
+        padding: 5px 12px;
+        pointer-events: none;
+        width: 207px;
+    }
+
+}
+.tooltip-control {
+    text-decoration: underline;
+    cursor: pointer;
+    &:hover + .tooltip {
+        display: block;
+        opacity: 1;
+        z-index: 1;
+    }
+}
+.tooltip-wrapper {
+    left: 50%;
+    margin-left: -50%;
+    top: -35px;
+    .tooltip-inner {
+        background: #363636;
+        font-size: 12px;
+        width: 116px;
+        &:before {
+            content: "";
+            border-top-color: #363636;
+            border-width: 6px 12px 0;
+            bottom: -6px;
+            left: 50%;
+            margin-left: -12px;
+            position: absolute;
+            height: 0;
+            width: 0;
+        }
+    }
+}
+.alert-warning-content {
+    @include widthCalc(100%, 92px);
+}
+#buttonFilterOverview {
+    margin-top: 1px;
+    padding: 9px 10px;
+    margin-bottom: 19px;
+}
+.alert-warning-wrapper {
+    color: #4D4D4D;
+    clear: both;
+    background: #FFF7E3;
+    border: 1px solid #ECDCBB;
+    font-size: 14px;    
+    overflow: hidden;
+    padding: 9px 20px;
+    a {
+        color: #E66666;
+        display: inline-block;
+    }
+    svg {
+        display: inline-block;
+        margin-left: 8px;
+        vertical-align: text-bottom;
+    }
+}
+
+// EMPLOYEES & CUSTOMERS
+.employees-customers-wrapper {
+    .header-main-wrapper.header-customer-wrapper {
+        margin-bottom: 23px;
+        .button-filter {
+            margin-top: -2px;
+            margin-left: 13px;
+        } 
+    }
+    .general-wrapper {
+        overflow: hidden;
+        li {
+            display: block;
+            overflow: hidden;
+            background: #FFF;
+            padding: 11px 16px 14px;
+            &:nth-child(even){background: #F7F7F7;}
+        }
+    }
+    .search-control-wrapper {margin-bottom: 15px;}
+    .select-pso-dropdown div.ui-widget {
+        height: 36px;
+        line-height: 2;
+    }
+    .general-text {
+        color: $brown-general;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 300;
+        vertical-align: middle;
+    }
+    .link-employees {
+        color: $brown-general;
+        display: inline-block;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: underline;
+        vertical-align: middle;
+    }
+}
+.role-acronym {
+    @include border-radius(8px);
+    background: #9DAAB3;
+    color: #FFF;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+    padding: 1px;
+    text-align: center;
+    vertical-align: middle;
+    width: 40px;
+}
+.blank-state-special-wrapper {
+    min-height: 160px;
+    padding: 60px 20px;
+    text-align: center;
+    h6 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 3px;
+    }
+    p {
+        font-size: 13px;
+        margin-bottom: 0;
+    }
+}

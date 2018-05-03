@@ -1,0 +1,46 @@
+/*============
+  Availability
+=============*/
+.form-control-autocomplete {
+    border: 0;
+    padding: 0 0;
+    &.error {
+        border: 0;
+        input.ui-inputtext {border: 1px solid #E66666;}
+    }
+}
+.ui-autocomplete {
+    position:relative;
+    .ui-autocomplete-input {
+        border: 1px solid #D8DBDD;
+        padding: 6px 12px;
+        height: 33px;
+        width: 100%;
+        &:focus {
+            border: 1px solid #00BE75;
+            outline: 0;
+            outline: none;
+        }
+    }
+    .ui-autocomplete-panel {
+        background-color: white;
+        overflow: auto;
+        position: absolute;
+        min-width: 407px;
+        top: 0!important;
+        .ui-autocomplete-list {
+            padding-top: 0.45rem;
+            padding-bottom: 0.45rem;
+
+            .ui-autocomplete-list-item {
+                text-transform: capitalize;
+                    padding: .25rem .75rem;
+                    padding-right: 02rem;
+
+                &.ui-state-highlight {
+                    background-color: #F7F7F7;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,121 @@
+/*=============
+    MANAGE USERS
+==============*/
+
+/*==Customer==*/
+.customer-table-wrapper {
+    tbody td:last-child {width: 130px;}
+    .form-control {
+        font-size: 13px;
+        height: 28px;
+    }
+    .custom-control-radio .custom-control-indicator {
+        width: 17px;
+        height: 17px;
+    }
+}
+/*==Team Members==*/
+.team-member-wrapper {
+    .input-search {width: 340px;}
+}
+.members-modal {
+    .ui-dropdown {height: 32px;}
+    input[type='email'].form-control {height: 32px;}
+    .modal-body {
+        padding-bottom: 4px;
+        .form-group {margin-bottom: 12px;}
+    }
+}
+.button-new-member {
+    font-size: 13px;
+    padding: 6px 12px;
+}
+.member-wrapper {
+    .left-content .form-group {margin-bottom: 12px;}
+    .right-content .header-border-bottom {margin: 17px 26px 12px;}
+    .btn-reset-password {
+        font-size: 13px;
+        font-weight: 600;
+        padding: 8px 10px;
+        margin-bottom: 12px;
+    }
+    .btn-delete-account {
+        font-size: 14px;
+        font-weight: 600;
+        padding: 7px 10px;
+    }
+    .data-role-wrapper .custom-control-checkbox {margin-top: 6px;}
+}
+
+.btn-delete-account-p {
+    font-size: 14px;
+    margin-top: 10px;
+    padding: 7px 10px;
+}
+
+.blank-state-special-wrapper.blank-state-profile {
+    padding: 20px 20px;
+    min-height:0px !important;
+    border-top: 1px solid #E9E9E9;
+}
+
+.data-role-wrapper {
+    margin-bottom: 32px;
+    label {
+        display: block;
+        margin-bottom: 5px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    span {
+        color: #838383;
+        display: block;
+        font-size: 15px;
+        font-weight: 400;
+    }
+    .general-wrapper {margin-top: 10px;}
+}
+.small-text {
+    color: #A1A1A1;
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+.without-width {
+    .ui-multiselect-label-container {min-width: 250px;}
+}
+
+.with-width-100 {
+    .ui-multiselect-label-container {width: 100%;}
+    .data-role-wrapper label {
+        @include widthCalc(100%, 10px);
+    }
+}
+
+.data-paymente-info {margin-top: 30px;}
+.button-footer-wrapper {
+    .btn-credit-card {
+        font-size: 13px;
+        padding: 8px;
+        width: 141px;
+        &:not([href]):not([tabindex]) {
+            color: #FFF;
+            text-decoration: none;
+        }
+    }
+    .btn-cancel {
+        font-size: 13px;
+        margin-right: 8px;
+        padding: 8px;
+        width: 64px;
+    }
+}
+.credit-card-icon {
+    position: relative;
+    top: 3px;
+    margin-right: 5px;
+}

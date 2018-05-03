@@ -1,0 +1,802 @@
+/*=================
+    Reservations
+==================*/
+.reservation-wrapper {
+  @include heightCalc(100%, 99px);
+  padding: 18px 35px;
+  .header-main-wrapper {
+    border-bottom: 1px solid #D9DBDE;
+    margin: 17px 0px 10px 2px;
+    padding-bottom: 12px;
+    position: relative;
+    h3 {
+        font-weight: 400;
+        margin: 0 0;
+    }
+  }
+  .right-content {
+    .lb-dark {font-size: 16px;}
+    .info-contact-reservation.info-contact-successfully {margin-bottom: 20px;}
+    .total-price-text {
+      color: #4D4D4D;
+      font-size: 20px;
+      margin-right: 30px;
+    }
+    .price-number-text {font-size: 20px;}
+    .body-wrapper {overflow: hidden;}
+  }
+  .select-dropdown {
+    display: inline-block;
+    margin-right: 15px;
+    vertical-align: top;
+    > .ui-widget {
+      height: 36px;
+      line-height: 1.8;
+    }
+    .ui-inputtext,
+    .ui-multiselect-label {font-size: 14px;}
+    .ui-inputtext {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 205px;
+    }
+  }
+  .input-search {height: 36px;}
+}
+.multiselect-wrapper {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  > span {
+    background: #ffffff;
+    background: -webkit-linear-gradient(top, #ffffff 0%, #f6f6f6 100%);
+    background: linear-gradient(to bottom, #ffffff 0%, #f6f6f6 100%);
+    cursor: pointer;
+    font-size: 14px;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+    left: 0;
+    padding: 7px 12px 8px;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    width: 130px;
+  }
+  .ui-multiselect-label-container label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 115px;
+  }
+  &.select-dropdown-with-border > span {
+    font-size: 13px;
+    left: 1px;
+    padding: 4px 12px 4px;
+    top: 1px;
+  }
+}
+.reservations-list-wrapper {
+  li {
+    @include border-radius(3px);
+    @include box-shadow(0px 6px 8px 0px rgba(0, 0, 0, 0.09));
+    background: #FFF;
+    border-left: 4px solid #3B4F5B;
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding: 13px 21px 5px;
+    &.active,
+    &.completed {
+        border-left: 4px solid $activeReservation;
+        .status {
+            color: $activeReservation;
+            border: 1px solid $activeReservation;
+        }
+    }
+    &.finished {
+        border-left: 4px solid $finishedReservation;
+        .status {
+            color: $finishedReservation;
+            border: 1px solid $finishedReservation;
+        }
+    }
+    &.upcoming,
+    &.open {
+        border-left: 4px solid $upcomingReservation;
+        .status {
+            color: $upcomingReservation;
+            border: 1px solid $upcomingReservation;
+        }
+    }
+    &.canceled {
+      border-left: 4px solid $canceledReservation;
+      .status {
+        color: #b3b3b3;
+        border: 1px solid $canceledReservation;
+        text-decoration: line-through;
+      }
+    }
+  }
+
+  &.no-reservations{
+      text-align: center;
+      margin-top: 75px;
+
+      img {width: 130px;}
+      b {
+        color: #7c878d;
+        display: block;
+      }
+      span {
+        display: block;
+        font-size: 18px;
+        color: #b0b0b0;
+        margin: 15px 0;
+      }
+  }
+
+  .btn-reservation-detail {margin-bottom: -10px;}
+}
+.header-reservation {
+  margin-bottom: 4px;
+  span {
+    color: #4D4D4D;
+    display: inline-block;
+    font-size: 17px;
+  }
+  .status {
+      @include border-radius(3px);
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 17px;
+      padding: 2px 10px;
+      position: relative;
+      text-transform: uppercase;
+      top: -2px;
+  }
+}
+.body-reservation {
+  border-bottom: 1px solid #EAEAEA;
+  margin-bottom: 4px;
+  overflow: hidden;
+  padding-bottom: 5px;
+  width: 100%;
+}
+.footer-reservation {
+  span {font-size: 13px;}
+  b {
+    color: #00BE75;
+    font-size: 15px;
+  }
+}
+.date-reservation-wrapper {
+  @include widthCalc(100%, 93px);
+}
+.more-detail-wrapper {
+  min-height: 75px;
+  position: relative;
+  text-align: right;
+  width: 93px;
+  > a {
+    margin-bottom: 5px;
+    &:last-child {
+      bottom: 0;
+      left: 0;
+      margin-top: 8px;
+      position: absolute;
+    }
+  }
+}
+.data-reservation {
+  display: inline-block;
+  margin-bottom: 6px;
+  margin-right: 30px;
+  vertical-align: top;
+  width: initial;
+  &:last-child{margin-right: 0;}
+  &.addres-reservation-field{width: 220px;}
+  b {
+    color: #4D4D4D;
+    display: block;
+    font-size: 12px;
+    margin-bottom: -3px;
+  }
+  span {
+    color: #4D4D4D;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    small {
+      color: #4D4D4D;
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+}
+
+/*===============
+    Reservation
+================*/
+.my-reservation-wrapper {
+  .left-content {
+    background: #FAFAFA;
+    border-right: 1px solid #EAEAEA;
+    padding: 15px 22px;
+    .form-group {
+      margin-bottom: 12px;
+      .margin-special {font-weight: 300;}
+    }
+  }
+  .header-border-bottom {
+    margin-bottom: 20px;
+    > label {margin-bottom: 1px;}
+  }
+  .margin-special {margin-top: -7px;}
+  .right-content {
+    .body-wrapper {padding: 13px 24px 20px;}
+    .header-border-bottom {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  .data-reservation-wrapper {
+    margin-bottom: 54px;
+    .row > li {
+      margin-bottom: 28px;
+      label {
+        display: block;
+        font-size: 12px;
+        margin-bottom: -3px;
+      }
+      span {
+        display: block;
+        font-size: 14px;
+        font-weight: 300;
+
+        &.upcoming {
+          color: $upcomingReservation;
+          border: 1px solid $upcomingReservation;
+        }
+
+        &.finished {
+          color: $finishedReservation;
+          border: 1px solid $finishedReservation;
+        }
+
+        &.active {
+          color: $activeReservation;
+          border: 1px solid $activeReservation;
+        }
+        &.canceled {
+          color: $canceledReservation;
+          border: 1px solid $canceledReservation;
+        }
+
+        &.status {
+          border-radius: 3px;
+          display: inline-block;
+          font-size: 12px;
+          font-weight: 400;
+          padding: 2px 10px;
+          position: relative;
+          top: 6px;
+        }
+      }
+    }
+    .edit-reservation-wrapper {
+      .row > li {margin-bottom: 22px;}
+      .ui-dropdown {
+        height: 34px;
+        line-height: 1.85;
+      }
+      .ui-inputtext {
+        @include widthCalc(100%, 5px);
+        height: 34px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .datepicker-wrapper {
+        float: left;
+        margin-right: 8px;
+        width: 48%;
+        &.daily-style {width: 100%;}
+        .ui-datepicker {margin-left: 0;}
+      }
+      .select-dropdown-wrapper {
+        float: right;
+        width: 48%;
+      }
+      .lb-dark {margin-bottom: 2px;}
+          
+    }
+  }
+  .price-number-text {
+    color: #00BE75;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .table thead th,
+  .table td, 
+  .table th {
+    border: 0;
+    padding: 0px 12px;
+  }
+  .table th {
+    font-size: 12px;
+  }
+  .table td {
+    font-size: 14px;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+  .successfully-table {margin-bottom: 35px;}
+  .custom-control-radio .custom-control-indicator {
+    height: 17px;
+    margin-top: -2px;
+    width: 17px;
+  }
+  .discount-text {
+    color: #E66666;
+  }
+}
+.history-wrapper {
+   li {
+      display: block;
+      font-weight: 300;
+      height: 19px;
+      margin-bottom: 12px;
+      padding-left: 16px;
+      position: relative;
+      span {font-size: 13px;}
+      &:before {
+        @include border-radius(150px);
+        content: '';
+        background: #DCDEE0;
+        display: inline-block;
+        height: 7px;
+        left: 0px;
+        position: absolute;
+        top: 6px;
+        width: 7px;
+      }
+      &:after {
+        content: '';
+        background: #DCDEE0;
+        display: inline-block;
+        height: 16px;
+        left: 3px;
+        position: absolute;
+        top: 17px;
+        width: 1px;
+      }
+      &:last-child:after {content: initial;}
+    }
+}
+.vehicle-detail-table {
+    @include box-shadow(0 4px 5px 0 rgba(0, 0, 0, 0.06));
+    @include border-radius(2px);
+    border: 1px solid #E0E3E4;
+    .table thead th,
+    .table tbody td {border: 0;}
+    .table {
+      margin-bottom: 0;
+      width: 100%;
+      thead th {
+        background: #FFF;
+        color: #B5B5B5;
+        font-size: 11px;
+        font-weight: 600;
+        padding: 13px 14px 8px;
+        &:first-child {width: 58px;}
+      }
+      tbody tr {
+        td {
+          background: #FFF;
+          border-top: 1px solid #EAEAEA;
+          color: #4D4D4D;
+          font-size: 14px;
+          padding: 9px 14px;
+          vertical-align: middle;
+          &:last-child {
+            text-align: right;
+            width: 110px;
+          }
+        }
+        &:nth-child(odd) td{background: #F6F6F6;}
+      }
+    }
+    .form-control {
+      font-size: 13px;
+      height: 28px;
+    }
+    .button-success-dark {
+      cursor: pointer;
+      font-size: 12px;
+      margin-left: 6px;
+      padding: 4px 11px;
+      text-decoration: none;
+      &:not([href]):not([tabindex]) {
+        color: #FFF;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
+    .btn-remove {cursor: pointer;}
+  }
+
+  .weekend-days-wrapper,
+  .weekly-days-wrapper {
+    position: relative;
+    .weekly-days-text {
+      background: #fff;
+      bottom: 1px;
+      color: #4d4d4d;
+      font-size: 14px;
+      font-weight: 400 !important;
+      height: 26px;
+      left: 1px;
+      overflow: hidden;
+      padding: 0px 0px 2px 12px;
+      pointer-events: none;
+      position: absolute;
+      z-index: 1;
+    }
+    table tr:hover td a {
+      background: #EAEAEA;
+      color: #444444;
+    }
+    .five-days table tr {
+      td:first-child a, 
+      td:last-child a { 
+        color: #C6C6C6;
+        cursor: default;
+        background: none;
+        pointer-events: none;
+      }
+    }
+    .five-days table tr:hover td:first-child a, 
+    .five-days table tr:hover td:last-child a  {background: none;}
+  }
+.weekend-days-wrapper {
+  table tr {
+    td {
+      a {
+        color: #C6C6C6!important;
+        cursor: default;
+        pointer-events: none;
+      }
+      &:nth-child(6) a {
+        color: #444444!important;
+        cursor: pointer;
+        pointer-events: visible;
+        &.ui-state-active {color: #FFF!important;}
+      }
+      &.ui-state-disabled {
+        .ui-state-default {
+          color: #C6C6C6!important;
+          cursor: default;
+        }
+        &.ui-datepicker-today {
+          .ui-state-default {color: #0CBA91 !important;}
+        }
+      }
+      &.ui-datepicker-today a {
+        background: #FFF;
+        color: #0CBA91!important;
+      }
+    }
+    &:hover {
+      td a {background: none;}
+      td.ui-state-disabled:nth-child(6) a {background: none;}
+      td:nth-child(6) a.ui-state-active {background: #0CBA90;}
+      td:nth-child(6) a {background: #EAEAEA;}
+    }
+  }
+}
+.float-left > .ui-dropdown {float: left;}
+.float-right > .ui-dropdown {float: right;}
+.mb-10px {
+  display: block;
+  margin-bottom: 10px;
+}
+.mr-1px {margin-right: 1.7%;}
+.info-reservation-wrapper {
+  border-top: 1px solid #EAEAEA;
+  margin: 35px 0;
+  position: relative; 
+  h3 {
+    background: #FFF;
+    color: #00B767;
+    font-size: 16px;
+    font-weight: 600;
+    padding-right: 5px;
+    position: absolute;
+    top: -11px;
+  }
+}
+.company-code-label {
+  color: #B5B5B5;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.company-code-info {
+  border-left: 3px solid #EAEAEA;
+  height: 34px;
+  padding-left: 12px;
+  padding-top: 3px;
+  span {
+    color: #4D4D4D;
+    font-size: 13px;
+  }
+}
+div.charge-payment-modal {
+  max-width: 500px;
+  .modal-dialog {width: inherit;}
+}
+.payment-method-options {
+  .custom-control {margin-bottom: -5px;}
+  .custom-radio {
+    .custom-control-indicator {
+      background-color: #FFF;
+      border: 1px solid lightgray;
+    }
+    
+    .custom-control-input:checked ~ .custom-control-indicator {
+      background-color: #00B767;
+      box-shadow: inset 0 0 0 2px #fff;
+      background-image: none;
+    }
+  }
+  .payment-option {
+    overflow: hidden;
+    margin-bottom: 12px;
+    .custom-control-description {font-size: 14px;}
+    &.col-sm-12 {margin-top: 18px;}
+  }
+}
+.price-monthly-recurring {
+  color: #4D4D4D;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 300;
+  margin-left: 22px;
+  &.active {color: #00BE75;}
+}
+.sum-wrapper {
+  color: #4D4D4D;
+  display: block;
+  font-size: 16px;
+  font-weight: 100;
+  margin-left: 22px;
+}
+.discount-input[type=number] { 
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0; 
+    &::-webkit-inner-spin-button, 
+    &::-webkit-outer-spin-button { 
+          @include appearance(none);
+    }
+}
+.discount-input-group {
+  display: inline-block;
+  width: 130px;
+  .input-group-addon {
+    background: #F9F9F9;
+  }
+}
+.apply-discount-text {
+  color: #00BE75;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  vertical-align: top;
+  margin-top: 5px;
+  margin-left: 9px;
+}
+.reset-discount-text {
+  color: #4D4D4D;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline;
+  vertical-align: top;
+  margin-top: 4px;
+  margin-left: 9px;
+}
+.info-amount {
+  font-size: 13px;
+  span {color: #ff5959;}
+}
+.btn-charge-payment {font-size: 14px;}
+.padding-inner-special {padding: 20px 0 10px;}
+.select-drop-credit-card-wrapper {
+  .col-sm-6 {padding-right: 8px;}
+}
+.select-drop-credit-card {
+  width: 100%;
+  > .credit-card-icons.default {vertical-align: text-bottom;}
+  .select-title {
+    color: #4D4D4D;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  &.ui-dropdown {
+    padding: 5px 20px 5px 11px;
+    height: 34px;
+  }
+  ul {
+    @include border-radius(0 0 3px 3px);
+    @include box-shadow(0px 6px 8px 0 rgba(0, 0, 0, 0.21));
+    background: #FFF;
+    left: 0;
+    margin-top: 7px;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+    li {
+      cursor: pointer;
+      padding: 8px 11px;
+      &.active,
+      &:hover {background-color: #F8F8F8;}
+    }
+  }
+  .title-credit-card, .number-credit-card {
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+}
+
+.credit-card-icons {
+  background: url('../images/credit-card-sprite.png') no-repeat;
+	background-size: 92px 66px;
+	width: 24px;
+	height: 17px;
+  display: inline-block;
+  margin-right: 11px;
+  vertical-align: text-bottom;
+  &.default,
+  &.unknown {
+    background-position: -4px -46px;
+    vertical-align: middle;
+  }
+  &.visa {
+    background-position: -4px -4px;
+    vertical-align: middle;
+  }
+  &.mastercard {
+    background-position: -34px -4px;
+    vertical-align: middle;
+  }
+  &.visa {
+    background-position: -4px -4px;
+    vertical-align: middle;
+  }
+  &.amex {
+    background-position: -34px -25px;
+    vertical-align: middle;
+  }
+  &.diners {
+    background-position: -4px -25px;
+    vertical-align: middle;
+  }
+  &.discover {
+    background-position: -64px -25px;
+    vertical-align: middle;
+  }
+  &.jcb {
+    background-position: -64px -4px;
+    vertical-align: middle;
+  }
+}
+
+.input-credit-card {
+  position: relative;
+  .form-control {padding-left: 45px;}
+  &:after {
+    content: '';
+    background: url('../images/credit-card-sprite.png') no-repeat;
+    background-position: -5px -56px;
+    background-size: 92px 66px;
+    display: inline-block;
+    height: 17px;
+    width: 24px;
+    background-position: -4px -46px;
+    position: absolute;
+    top: 9px;
+    left: 12px;
+  }
+  &.mastercard:after {background-position: -34px -4px;}
+  &.visa:after {background-position: -4px -4px;}
+  &.amex:after {background-position: -34px -25px;}
+  &.diners:after {background-position: -4px -25px;}
+  &.discover:after {background-position: -64px -25px;}
+  &.jcb:after {background-position: -64px -4px;;}
+}
+.coupon-modal {
+  .lb-light {
+    display: block;
+    color: #B5B5B5;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+  .modal-dialog {width: 450px;}
+  .alert-logged {
+    font-size: 13px;
+    letter-spacing: -0.4px;
+    margin-bottom: 16px;
+    padding: 10px 12px;
+    a {
+      font-size: 13px;
+      letter-spacing: 0px;
+    }
+  }
+  .modal-header,
+  .modal-body {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .modal-body {
+    padding: 20px 0 60px;
+    &.padding-modal {padding-bottom: 25px;}
+  }
+  input[type="text"].form-control {
+    display: inline-block;
+    height: 34px;
+    margin-right: 14px;
+    width: 294px;
+  }
+  input[type="submit"].btn {
+    display: inline-block;
+    font-size: 12px;
+    padding: 8px 11px;
+  }
+}
+.select-drop-credit-card-wrapper {
+  .link-add-new-content-wrapper {margin-top: 2px;}
+}
+.total-price-wrapper {
+  border-top: 1px solid #EAEAEA;
+  padding-top: 15px;
+}
+.total-price-text {
+  color: #4D4D4D;
+  font-size: 16px;
+}
+.alert-wrapper {
+  border-radius: 2px;
+  background: #FFF;
+  border: 1px solid #CCC;
+  color: #3B4F5B;
+  font-size: 14px;
+  overflow: hidden;
+  padding: 5px 12px;
+}
+.alert-wrapper.alert-logged {
+  background: #EFF4F7;
+  border: 1px solid #CEDAE0;
+}
+.coupon-modal .alert-wrapper {
+  font-size: 13px;
+  letter-spacing: -0.4px;
+  margin-bottom: 16px;
+  padding: 10px 12px;
+}
+.coupon-total-wrapper {
+  clear: both;
+  overflow: hidden;
+  .total-price-text {font-weight: 600;}
+}
+div.apply-amount-modal {
+  max-width: 360px;
+  .modal-dialog {width: 360px;}
+  .payment-method-options .payment-option.col-sm-12 {margin-top: 8px;}
+  .price-monthly-recurring,
+  .sum-wrapper { margin-left: 0;}
+}

@@ -1,0 +1,115 @@
+/*============
+    Coupons
+=============*/
+.coupon-wrapper {
+    padding: 18px 24px 24px;
+    .header-border-bottom {margin: 0 0 12px;}
+    .custom-control-checkbox {
+        position: relative;
+        top: 5px;
+    }
+    .custom-control.disabled {
+        cursor: no-drop;
+        opacity: .7;
+    }
+    .datepicker-select .ui-inputtext {
+        @include border-radius(2px);
+        background-color: #fff;
+        background-image: none;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #D8DBDD;
+        color: #55595c;
+        display: block;
+        font-size: 1rem;
+        line-height: 1.25;
+        padding: 6px 12px;
+        width: 100%;
+        &.ui-state-disabled {
+            background: #E8E8E8;
+            pointer-events: none;
+        }
+    }
+    .input-group-wrapper {
+        @include widthCalc(100%, 130px);
+        display: inline-block;
+        margin-left: 15px;
+        vertical-align: top;
+    }
+    .ui-dropdown {
+        height: 34px;
+        line-height: 1.75;
+    }
+    .ui-multiselect {
+        border: 1px solid #D8DBDD;
+        height: 34px;
+        line-height: 1.75;
+    }
+    .ui-multiselect-panel {
+        @include box-shadow(0 6px 8px 0px rgba(0, 0, 0, 0.09));
+        // .ui-multiselect-item:nth-child(even) {background-color: #F8F8F8;}
+    }
+    .ui-multiselect-label-container {width: 100%;}
+    .datepicker-select.error .ui-inputtext {border: 1px solid $error-color}
+    .error .ui-multiselect {border: 1px solid $error-color}
+    .input-group-addon.error {
+        border: 1px solid $error-color;
+        border-right: 0;
+        color: inherit;
+    }
+}
+.modal-coupon {
+    .modal-header {
+    border-bottom: 0;
+    margin-bottom: 5px;
+    }
+    .modal-body{
+        padding: 0 0;
+        border: 1px solid #EAEAEA;
+        margin-bottom: 30px;
+    }
+}
+.parking-lot-list {
+    background: #F8F8F8;
+    border-bottom: 1px solid #EAEAEA;
+    padding: 12px;
+    padding-left: 20px;
+    &:nth-child(even) {background: #FFF;}
+    &:last-child {border-bottom: 0;}
+}
+// input[type="number"].form-control.input-discount:focus {border-left: 0px;}
+.coupon-detail-wrapper {
+    .nav-tab-wrapper {margin: 18px 0 0;}
+    .avaible-spots-wrapper h3 {
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+    .total-details-wrapper {
+        float: right;
+        margin: 10px 0 12px;
+
+        li { 
+            float: left;
+            margin-left: 32px;
+            text-align: center;
+            > span {
+                display: block;
+                font-size: 13px;
+            }
+        }
+        .number-text {
+            color: #00BE75;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: -2px;
+        }
+    }
+    .tab-content {margin: 0 26px;}
+    .general-wrapper {
+        clear: both;
+        width: 100%;
+    }
+    .left-content .form-group > .discount-text {font-size: 24px;}
+    .parking-lot-item {margin-bottom: 2px;}
+}

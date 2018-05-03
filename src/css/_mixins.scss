@@ -1,0 +1,65 @@
+/*============
+    Mixins
+=============*/
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+@mixin transition($value...) {
+  -webkit-transition: $value;
+     -moz-transition: $value;
+      -ms-transition: $value;
+       -o-transition: $value;
+          transition: $value;
+}
+
+@mixin heightCalc($height, $value) {
+  height: -webkit-calc(#{$height} - #{$value});
+     height: -moz-calc(#{$height} - #{$value});
+       height: -o-calc(#{$height} - #{$value});
+          height: calc(#{$height} - #{$value});
+}
+
+@mixin widthCalc($width, $value) {
+  width: -webkit-calc(#{$width} - #{$value});
+     width: -moz-calc(#{$width} - #{$value});
+       width: -o-calc(#{$width} - #{$value});
+          width: calc(#{$width} - #{$value});
+}
+
+@mixin box-shadow($shadow...) {
+  -webkit-box-shadow: $shadow;
+     -moz-box-shadow: $shadow;
+          box-shadow: $shadow;
+}
+
+
+@mixin rotate($rotate) {
+  -webkit-transform: rotate($rotate);
+      -ms-transform: rotate($rotate);
+      -moz-transform: rotate($rotate);
+          transform: rotate($rotate);
+}
+
+@mixin appearance($appareance) {
+  -webkit-appearance: ($appareance);
+     -moz-appearance: ($appareance);
+          appearance: ($appareance);
+}
+
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}

@@ -1,0 +1,506 @@
+/*============
+     Main
+=============*/
+.main {
+  background: #EEEEEE;
+  @include heightCalc(100vh, 108px);
+  padding: 25px 30px;
+  .tab-content {
+    margin: 0 auto;
+    max-width: 100%;
+    &.spost-form-list{
+      margin: 20px auto 0;
+    }
+  }
+}
+.main-pane {
+  padding: 20px 25px;
+  &.margin {margin-top: -20px;}
+}
+.header-main-wrapper {
+  margin-bottom: 9px;
+  overflow: hidden;
+  padding-bottom: 3px;
+  a{
+    @include transition(opacity 0.2s ease);
+    &:hover,
+    &:focus{
+      text-decoration: none;
+    }
+    &:hover img,
+    &:focus img {
+      opacity: 0.7;
+      text-decoration: none;
+    }
+  }
+  .back-img-btn {
+    display: inline-block;
+    height: 16px;
+    margin: 5px 10px 0 0;
+    vertical-align: middle;
+    width: 17px;
+  }
+  h3 {
+    color: #404040;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 5px 0 0;
+    vertical-align: middle;
+    line-height: 1.5;
+    .pso-sigla {font-weight: 400;}
+  }
+  .btn {margin-left: 8px;}
+}
+
+/*============
+     Table
+=============*/
+.table-wrapper {
+  thead {
+    tr {background: #FFF;}
+    th {
+      color: $brown-general;
+      border-bottom: 1px solid #E9E9E9;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 14px 22px;
+      text-transform: uppercase;
+      vertical-align: middle;
+    }
+
+  }
+  tbody {
+    tr:nth-of-type(odd) {background: #F6F6F6;}
+    td {
+      font-size: 16px;
+      font-weight: 400;
+      padding: 11px 22px;
+      vertical-align: middle;
+      span a {
+        color: $brown-general;
+        text-decoration: underline;
+      }
+      &:last-child {
+        text-align: right;
+        a {
+          margin-left: 10px;
+          &:first-child {margin-left: 0;}
+        }
+      }
+      &.special-td{
+        background: #FFF;
+        padding: 80px;
+        text-align: center;
+        img {
+          display: block;
+          margin: 0 auto 15px;
+        }
+        span {
+          color: #7c878d;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+  .name-td {font-size: 18px;}
+
+  .number-td {font-size: 26px;}
+  &.result-table {
+    border: 1px solid #E9E9E9;
+    thead th {
+      border-top: 0;
+      padding: 15px;
+    }
+    tbody td {
+      padding: 15px;
+      position: relative;
+      &:last-child {text-align: left;}
+    }
+  }
+  &.pso-table {
+    tbody {
+      td {
+        vertical-align: top;
+        &:nth-child(3){width: 400px;}
+      }
+      ul > li {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+    }
+  }
+}
+.parking-lot-table {
+  td:nth-child(2) {width: 400px;}
+}
+.address-td {
+  font-size: 15px;
+  .fa {margin-right: 4px;}
+}
+.pso-sigla {
+  @include border-radius(150px);
+  background: #9DAAB3;
+  color: #FFF;
+  display: inline-block;
+  font-size: 14px;
+  height: 24px;
+  margin-right: 7px;
+  padding: 1px;
+  text-align: center;
+  width: 24px;
+}
+/*============
+  Lot Content
+=============*/
+.lot-form {
+  margin-bottom: 40px;
+  > .general-container {
+    display: table;
+    min-height: 550px;
+    width: 100%;
+  }
+  label {margin-bottom: 4px;}
+
+  .lb-dark {
+    color: $brown-general;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .lb-light {
+    display: block;
+    color: #B8B8B8;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .lb-border-left {
+    border-left: 2px solid #CCC;
+    margin-left: 15px;
+    padding-left: 9px;
+  }
+  .float-xs-left .lb-dark {margin-top: 5px;}
+}
+
+.left-content {
+  display: table-cell;
+  vertical-align: top;
+  width: 320px;
+}
+.right-content {
+  @include widthCalc(100%, 320px);
+  display: table-cell;
+  vertical-align: top;
+}
+.lot-general-right-content {
+  background: #FBFBFB;
+  border-right: 1px solid #D8DBDD;
+  padding: 20px 10px;
+  .form-group {margin-bottom: 8px;}
+  .form-control{font-size: 14px;}
+  .lb-light {font-size: 12px;}
+  .ui-dropdown {height: 34px;}
+  .ui-dropdown-label {margin: 2px 0 0;}
+}
+.hr-special {
+  clear: both;
+  margin: 20px -10px;
+}
+.pricing-lot-wrapper {
+  .hr-special {margin: 20px 20px;}
+  label {font-size: 14px;}
+  .col-form-label {
+    padding-left: 25px;
+    position: relative;
+    top: 20px;
+  }
+  .col-xs-1-customized { width: 130px;}
+  .hourly-max-price {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 0.8em;
+    color: #777777;
+    margin-top: 5px;
+    margin-left: -1px;
+    float: right;
+  } 
+  .midnight {
+    position: relative;
+    top: 28px;
+    text-align: center;
+    margin-left: -8px;
+  }
+  .ui-dropdown {width:113px;}
+  .hour {
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+  }
+}
+
+.pricing-lot-wrapper.detail {
+  .col-xs-2, .col-xs-1, .col-xs-3 {padding:0}
+  .hr-special {margin: 10px 0px;}
+  .not-hour {
+    font-style: italic;
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+  }
+}
+
+.availability-right-content {
+  background: #FFF;
+  padding: 0 0 20px;
+}
+.avaible-spots-wrapper {
+  .nav-tab-wrapper {
+    background: #FBFBFB;
+    .nav-tabs {
+      padding-left: 0;
+      li.nav-item {
+        > a {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 400;
+          padding: 26px 1px 21px;
+          &.active {
+            color: $brown-general;
+            font-weight: 600;
+          }
+        }
+        & + li.nav-item{margin-left: 26px;}
+      }
+    }
+    .float-xs-right {
+      margin-top: 14px;
+      margin-right: 24px;
+    }
+  }
+}
+.spost-form-list{
+  list-style: none;
+  margin: 0 9px 0;
+  padding: 0 0;
+  > .spost-list-wrapper {width: 100%;}
+}
+.lot-form-list {
+  list-style: none;
+  margin-bottom: 0;
+  padding: 0 0;
+  .lot-list-wrapper {
+    @include border-radius(3px);
+    display: block;
+    background: #F3F3F3;
+    border: 1px solid #EEEEEE;
+    display: inline-block;
+    margin-bottom: 4px;
+    padding: 16px 10px 16px 16px;
+    position: relative;
+    width: 100%;
+    &.disabled {
+      background: #f8f8f8;
+      cursor: no-drop;
+      position: relative;
+      &:after {
+        position :absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        content:' ';
+        z-index : 3;
+      }
+      .day-wrapper,
+      .time-wrapper {
+        pointer-events: none;
+        opacity: 0.5;
+      }
+    }
+  }
+  .blackout-date-wrapper {
+    margin: 0 24px 4px;
+    padding: 10px 13px 11px;
+    @include widthCalc(100%, 48px);
+    > div:not(.last-wrapper) {margin-right: 20px;}
+    .lb-light {font-size: 12px;}
+    .stops-widht {width: 40px;}
+    .datepicker-wrapper {
+      float: left;
+      margin-right: 23px;
+      input.ui-inputtext {
+        display: inline-block;
+        height: 29px;
+        margin-right: 6px;
+        padding: 3px 12px;
+        vertical-align: top;
+        width: 140px;
+      }
+    }
+    .ui-datepicker {
+      margin-top: 45px;
+      margin-left: 3px;
+    }
+    .close-lot {margin: 0px 0 10px;}
+    .custom-control-radio {
+      float: left;
+      margin-top: 10px;
+      margin-right: 28px;
+      .custom-control {margin-bottom: 10px;}
+    }
+    .holidays-wrapper {
+      float: left;
+      margin-right: 20px;
+    }
+    .ui-multiselect-label-container {width: 254px;}
+    .ui-multiselect-label {
+      height: 29px;
+      line-height: 1.3;
+      padding: 5px 23px 5px 12px;
+    }
+    .time-wrapper {width: 380px;}
+    .ui-multiselect-item > label {width: 212px;}
+  }
+}
+.time-ico-wrapper {
+  background: url("../images/time-ico.png") no-repeat center;
+  background-size: 14px;
+  display: inline-block;
+  height: 18px;
+  margin-right: 5px;
+  vertical-align: top;
+  width: 14px;
+}
+.time-text {
+  color: $brown-general;
+  display: inline-block;
+  font-size: 0.8em;
+  vertical-align: top;
+}
+.stops-widht {
+  float: left;
+  text-align: center;
+  width: 70px;
+}
+.spot-group-input {
+  font-size: 14px;
+  padding: 5px;
+  text-align: center;
+}
+.lot-list-width {
+  @include widthCalc(100%, 70px);
+  float: left;
+  margin-bottom: 22px;
+}
+.day-wrapper {
+  float: left;
+  margin-right: 10px;
+  width: 350px;
+  .custom-control-radio {float: left;}
+}
+.toogle-days-wrapper {
+  float: left;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 232px;
+}
+.time-wrapper {
+  float: left;
+  margin-left: 10px;
+  @include widthCalc(100%, 435px);
+}
+.time-control-wrapper {
+  margin-bottom: 5px;
+  margin-top: 9px;
+  .custom-control-checkbox {margin-left: 10px;}
+}
+.last-wrapper {
+  float: right;
+  width: 34px;
+  .close-lot {margin-bottom: 20px;}
+}
+.close-lot {
+  cursor: pointer;
+  float: right;
+  height: 15px;
+  margin: -10px 0 10px;
+  padding: 8px;
+  position: relative;
+  width: 16px;
+  z-index: 4;
+}
+.line-close {
+  @include border-radius(150px);
+  background: #C6C6C6;
+  display: block;
+  height: 2px;
+  position: absolute;
+  right: 0;
+  width: 16px;
+  &.line-1 {@include rotate(45deg);}
+  &.line-2 {@include rotate(-45deg);}
+}
+.input-switch {
+  clear: both;
+  float: right;
+}
+.link-add-new-content-wrapper{
+  margin-top: -10px;
+  a {
+   color: #00B767;
+   cursor: pointer;
+   display: inline-block;
+   font-size: 0.8em;
+   margin-right: 12px;
+   text-decoration: underline;
+   &:not([href]):not([tabindex]){color: #00B767;}
+ }
+}
+.daily-max {
+  margin: 7px 0;
+  .custom-control-checkbox .custom-control-description {
+    color: $brown-general;
+    font-size: 12px;
+    margin-top: 0;
+  }
+  .form-control {
+    display: inline-block;
+    font-size: 13px;
+    height: 26px;
+    margin-right: 10px;
+    padding: 5px 7px;
+    width: 50px;
+  }
+  .ui-dropdown {
+    background-size: 16px;
+    height: 26px;
+    margin: 0 0;
+    padding: 3px 19px 3px 7px;
+  }
+  .ui-dropdown-label {font-size: 12px;}
+  .d-inline-block {width: 82px;}
+  .input-group-addon {
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+}
+.contact-tab-wrapper .close-lot {margin: -14px 0 10px;}
+.contact-details-wrapper {
+  overflow: hidden;
+  padding: 2px 8px;
+  margin-bottom: 8px;
+  .header-border-bottom {margin: 0 0 18px;}
+}
+.contact-item {
+  float: left;
+  margin-bottom: 25px;
+  width: 300px;
+  label.lb-dark {
+    display: block;
+    font-size: 12px;
+    margin-bottom: -1px;
+  }
+  span {
+    display: block;
+    font-size: 14px;
+  }
+}

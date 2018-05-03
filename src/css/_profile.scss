@@ -1,0 +1,80 @@
+/*===============
+     PROFILE
+================*/
+.hidde-nav-tab-wrapper .nav-tab-wrapper{display: none;}
+.profile-wrapper {
+    .left-content {
+        background: #FAFAFA;
+        border-right: 1px solid #D9DBDE;
+        .header-border-bottom {margin: 13px 18px 0 22px;}
+        .body-wrapper {margin: 12px 18px 0 22px;}
+        .form-group {
+            margin-bottom: 10px;
+            > span {
+                color: $brown-general;
+                display: block;
+                font-size: 16px;
+                font-weight: 300;
+                margin-top: -6px;
+            }
+        }
+    }
+    .right-content {
+        .header-border-bottom {
+            margin: 17px 26px 22px;
+            h3 {
+                color: $brown-general;
+                font-size: 14px;
+                font-weight: 600;
+            }
+        }
+        .body-wrapper {margin: 11px 26px;}
+        .general-wrapper {
+            border-left: 1px solid #E9E9E9;
+            border-right: 1px solid #E9E9E9;
+            overflow: hidden;
+        }
+        .table {margin-bottom: 0;}
+        .address-td {font-weight: 300;}
+    }
+    .avaible-spots-wrapper {
+        margin: 0 26px;
+        .nav-tab-wrapper {
+            background: #FFF;
+            .nav-tabs li.nav-item {
+                &:first-child {margin-left: 0;}
+                 > a {padding: 20px 1px 18px;}
+            }
+        }
+        
+    }
+    .status {
+        @include border-radius(3px);
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 2px 10px;
+        position: relative;
+        text-transform: uppercase;
+        top: -2px;
+
+        &.finished {
+            color: $finishedReservation;
+            border: 1px solid $finishedReservation;
+        }
+        &.upcoming {
+            color: $upcomingReservation;
+            border: 1px solid $upcomingReservation;
+        }
+        &.active {
+            border: 1px solid $activeReservation;
+            color: $activeReservation;
+        }
+        &.canceled {
+            border: 1px solid $canceledReservation;
+            color: $canceledReservation;
+        }
+    }
+}
+.profile-modal .form-control.ng-invalid {border: 1px solid #D8DBDD;}
+.modal-customer .modal-body p {color: #4D4D4D;}

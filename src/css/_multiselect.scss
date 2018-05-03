@@ -1,0 +1,100 @@
+/*================
+    MultiSelect
+=================*/
+.ui-multiselect {
+    @include appearance(none);
+    @include border-radius(2px);
+    @include box-shadow(0 2px 4px 0px rgba(0, 0, 0, 0.05));
+    background: #ffffff;
+    background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 100%);
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 100%);
+    background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 100%);
+    color: #4d4d4d;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 400;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 );
+    height: 30px;
+    line-height: 1.55;
+    padding: 5px 30px 5px 12px;
+    position: relative;
+    vertical-align: top;
+    &:before {
+        content: '';
+        background-image: url("../images/arrow-select.png");
+        background-size: 19px;
+        display: inline-block;
+        height: 8px;
+        position: absolute;
+        right: 12px;
+        top: 40%;
+        width: 14px;
+    }
+
+    .ui-multiselect-trigger,
+    .ui-widget-header {display: none;}
+}
+.ui-multiselect-label-container {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 128px;
+    label {cursor: pointer;}
+} 
+.ui-multiselect-panel {
+    @include border-radius(2px);
+    @include box-shadow(0 2px 4px 0px rgba(0,0,0, 0.05));
+    background: #FFF;
+    margin-top: 4px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+}
+.ui-multiselect-items{
+    overflow: auto;
+    padding: 6px 0;
+}
+.ui-multiselect-item {
+    overflow: hidden;
+    padding: 5px 0;
+    .ui-chkbox {
+        float: left;
+        height: 16px;
+        margin-left: 12px;
+        margin-right: 10px;
+        width: 16px;
+    }
+    > label {
+        float: left;
+        font-size: 12px;
+        margin: 0 0;
+    }
+    &:hover,
+    &.ui-state-highlight {background-color: $bg-active-hover-select-dropdown;}
+}
+.ui-chkbox-icon{
+    @include border-radius(2px);
+    background: #FFF;
+    border: 1px solid #DDDDDD;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    &.fa-check {
+        background-size: 9px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+        border: 1px solid #00BE75;
+        background-color: #00BE75;
+        &:before {content: '';}
+    }
+}
+.labell-xl-modal {
+    .ui-multiselect-label-container  {width: 315px;}
+    .multiselect-wrapper > span {width: 330px;}
+    .multiselect-wrapper .ui-multiselect-label-container label {width: 100%;}
+}

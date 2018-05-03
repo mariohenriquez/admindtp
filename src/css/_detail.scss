@@ -1,0 +1,89 @@
+/*============
+    DETAIL
+=============*/
+.header-border-bottom {
+  border-bottom: 1px solid #EAEAEA;
+  margin: 0 15px 12px;
+  overflow: hidden;
+  padding-bottom: 8px;
+  > label {padding-left: 0;}
+}
+.detail-description-text {
+  color: $brown-general;
+  font-size: 15px;
+  margin-top: -2px;
+  padding-right: 15px;
+}
+.parking-detail-content {
+  margin-bottom: 10px;
+  .margin-special {
+    margin-bottom: 11px;
+  }
+  .form-group {float: initial;}
+}
+.table-detail-reservation {
+  @include box-shadow(0 2px 4px 0.5px rgba(0, 0, 0, 0.09));
+  width: 100%;
+  &.table-wrapper tbody td{
+    font-size: 15px;
+    &:last-child {text-align: left;}
+  }
+}
+.table-special-wrapper {
+  margin-bottom: 20px;
+  width: 100%;
+  th {padding-bottom: 8px;}
+  tbody td{
+    font-size: 13px;
+    padding: 10px;
+  }
+  &.table-width tbody tr {
+    td:first-child {
+      width: 20px;
+    }
+    td:nth-child(2){
+      border-bottom: 1px solid #EAEAEA;
+      padding-left: 0;
+      width: inherit;
+    }
+  }
+}
+
+.table-availability-rules {
+  margin-bottom: 25px;
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+}
+.days-wrapper {
+  border-bottom: 1px solid #EAEAEA;
+  margin-left: 10px;
+  margin-right: -4px;
+  padding: 10px 10px 9px 0;
+  vertical-align: top;
+  width: 160px;
+  > span {font-size: 13px;}
+}
+.hours-from-to-wrapper {
+  border-bottom: 1px solid #EAEAEA;
+  padding: 13px 15px 6px ;
+  padding-left: 0;
+  vertical-align: top;
+  width: calc(100% - 200px);
+  min-height: 44px;
+  > div {padding: 0 0;}
+  .hour-from-to-text{
+    display: inline-block;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  .col-lg-6 {width: 228px;}
+}
+.price {
+  padding: 0;
+  color: #2FCA8D;
+  font-size: 13px;
+}
+.holiday-text {margin-right: 10px;}

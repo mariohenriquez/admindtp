@@ -1,0 +1,139 @@
+/*===============
+    OVERVIEW
+================*/
+.c3-tooltip th {
+    background-color: #53646f;
+}
+
+.c3-grid line {
+    stroke: #eeeeee;
+}
+
+.c3-line-ammount {
+    stroke: #439CCE !important;
+}
+
+.c3-circle {
+    fill: #439CCE !important;
+}
+
+.c3-circle._expanded_ {
+    stroke: #439CCE;
+}
+
+.c3-circle-0._expanded_, .c3-circle-1._expanded_, .c3-circle-2._expanded_,
+.c3-circle-3._expanded_, .c3-circle-4._expanded_, .c3-circle-5._expanded_,
+.c3-circle-6._expanded_, .c3-circle-7._expanded_, .c3-circle-8._expanded_,
+.c3-circle-9._expanded_, .c3-circle-10._expanded_, .c3-circle-11._expanded_ {
+    opacity: 1 !important;
+}
+
+.c3-circle-0, .c3-circle-1, .c3-circle-2,
+.c3-circle-3, .c3-circle-4, .c3-circle-5,
+.c3-circle-6, .c3-circle-7, .c3-circle-8,
+.c3-circle-9, .c3-circle-10, .c3-circle-11 {
+    opacity: 0 !important;
+}
+
+// Dashboard
+.total-general-wrapper {
+    padding: 18px 15px;
+    margin-bottom: 20px;
+    .col-sm-2-5 {
+        float: left;
+        margin: -2px 0;
+        text-align: center;
+        width: 20%;
+    }
+    .border-right-silver {border-right: 1px solid #D9DBDE;}
+}
+
+#financial-chart {
+    background-color: white;
+    margin-top: 10px;
+    .c3-line-data1 {
+        color: #439cce;
+    }
+}
+
+.reservations-overview {
+    background-color:white;
+    padding:15px;
+
+    // .reservations-overview-header {
+    //    // text-align:right
+    // }
+
+    #reservations-chart {
+        background-color: white;
+        text-align: center;
+        .c3-arc-Monthly {stroke: #1983DE;}
+        .c3-arc-Hourly {stroke: #15BD77;}
+        .c3-arc-Daily {stroke: #FED920;}
+        .c3-arc-Overnight {stroke: #FF9020;}
+        .c3-arc-Weekly-5-Days- {stroke: #23d6d6;}
+        .c3-arc-Weekly-7-Days- {stroke: #ea96ef;}
+        .c3-arc-Weekend-Fri-Sun- {stroke: #8247d0;}
+        .c3-arc-Weekend-Fri-Mon- {stroke: #E66969;}
+        .c3-arc-Monthly-2-or-more-months- {stroke: #978080}
+        .c3-arc-Monthly-Recurring- {stroke: #ef0000}
+        .c3-arc-empty {stroke: #C1C1C1;}
+    }
+    .c3-legend-item.c3-legend-item-empty {display: none;}
+    .reservations-footer {
+        padding: 0px 15px;
+        margin-bottom: 0px;
+
+        .col-sm-5, .col-sm-6 {
+            text-align: center;
+            .number-financial-movements {
+                font-size: 28px;
+                font-weight: 400;
+            }
+            .text-financial-movements {
+                color: #D9DBDE;
+                margin: 0 auto;
+                width: 130px;
+            }
+        }
+        .border-right-silver {border-right: 1px solid #D9DBDE;}
+    }
+}
+
+.button-details.btn-success-white {
+    background-color: white;
+    color: #4D4D4D;
+    font-weight: 400;
+}
+
+.charts-wrapper {
+    .row .general-wrapper {min-height: 351px;}
+} 
+.overview-modal {
+    .datepicker-wrapper .datepicker-select input.ui-inputtext {
+        font-size: 12px;
+        height: 30px;
+        &.ui-state-disabled {
+            color: #b2b2b2;
+            background-color: #EEE;
+        }
+    }
+    .col-sm-6 {
+        &:first-child {padding-right: 8px;}
+        &:last-child {padding-left: 8px;}
+    }
+    .modal-body {
+        padding-bottom: 10px;
+        .form-group {margin-bottom: 12px;}
+    }
+    .modal-footer {
+        .btn {
+            font-size: 13px;
+            padding: 9px 16px;
+        }
+    }
+    .custom-control-radio {
+        .custom-control-description {margin-left: 5px;}
+        &.mt-c {margin-top: 8px;}
+    }
+}
