@@ -373,7 +373,7 @@ textarea.form-control:focus {border: 1px solid $focus-inputs;}
   .datepicker-select {
     input.ui-inputtext {
       @include border-radius(2px);
-      background: #FFF url("../images/calendar-ico.png") no-repeat right center;
+      background: #FFF url("assets/images/calendar-ico.png") no-repeat right center;
       background-size: 25px;
       border: 1px solid #D8DBDD;
       color: #4D4D4D;
@@ -409,7 +409,7 @@ input[type="number"] {
 .input-search {
   @include border-radius(3px);
   @include box-shadow(0 2px 4px 0px rgba(0, 0, 0, 0.05));
-  background: #FFF url("../images/search-ico.png") no-repeat center left;
+  background: #FFF url("assets/images/search-ico.png") no-repeat center left;
   background-size: 16px;
   background-position-x: 13px;
   border: 1px solid #FFF;

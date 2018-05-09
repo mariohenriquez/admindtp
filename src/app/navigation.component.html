@@ -1,0 +1,82 @@
+<header>
+        <nav class="navbar navbar-full navbar-light">
+          <div class="float-xs-left">
+            <a class="logo-wrapper" href="/">
+              <img src="assets/images/dtp-logo.png" alt="DTP" />
+            </a>
+            <nav class="nav nav-inline nav-link-wrapper">
+              <a class="nav-link" routerLink="/overview" routerLinkActive="active" *ngIf="userService.labelRole() == 'Admin'">Overview</a>
+              <a class="nav-link" routerLink="/inventory" routerLinkActive="active" >Inventory</a>
+              <a class="nav-link" routerLink="/movements" routerLinkActive="active" *ngIf="userService.labelRole() === 'Admin'">Movements</a>
+              <a class="nav-link" routerLink="/manage-users" routerLinkActive="active" *ngIf="userService.labelRole() != 'Tow Truck Driver' && userService.labelRole() != 'Parking Lot Monitor'">Manage Users</a>
+              <a class="hidden nav-link" routerLink="/availability" routerLinkActive="active">Availability</a>
+            </nav>
+          </div>
+          <div class="float-xs-right">
+            <a *ngIf="userService.labelRole() == 'Admin' || userService.labelRole() == 'Customer Support'" routerLink="/inventory/reservations/new" href="#" class="btn btn-outline text-uppercase" role="button">New Reservation</a>
+      
+            <div class="btn-group" [ngClass]="{'open': displayMenu}" (click)="displayMenu=!displayMenu">
+              <div class="user-wrapper dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div class="float-xs-left">
+                    {{userService.username()}}
+                    <i class="">{{userService.labelRole()}}</i>
+                  </div>
+              </div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="#" routerLink="/profile">Profile</a>
+                <a class="dropdown-item" href="#" (click)="logout()">Log out</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <div class="nav-tab-wrapper">
+          <ul class="nav nav-tabs" role="tablist" *ngIf="showNavbar == 'inventory'">
+            <li class="nav-item" *ngIf="userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() != 'Tow Truck Driver'">
+              <a class="" routerLink="/inventory/psos" routerLinkActive="active">PSO</a>
+            </li>
+            <li class="nav-item">
+              <a class="" *ngIf="userService.labelRole() != 'Customer Support'" routerLink="/inventory/reservations" routerLinkActive="active">Reservations</a>
+            </li>
+            <li class="nav-item">
+              <a class="" routerLink="/inventory/parking-lots" routerLinkActive="active">Parking Lots</a>
+            </li>
+            <li class="nav-item">
+              <a class="" routerLink="/inventory/reports" routerLinkActive="active">Reports</a>
+            </li>
+            <li class="nav-item" *ngIf="userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() != 'Tow Truck Driver'">
+              <a class="" routerLink="/inventory/coupons" routerLinkActive="active">Coupon Codes</a>
+            </li>
+            <li class="nav-item" *ngIf="userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() != 'Tow Truck Driver'">
+              <a class="" routerLink="/inventory/rates" routerLinkActive="active">Utilization</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs" role="tablist" *ngIf="showNavbar == 'manage-users'">
+            <li class="nav-item">
+                <a class="" routerLink="/manage-users/customers" routerLinkActive="active">Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="" routerLink="/manage-users/team-members" routerLinkActive="active">Team Members</a>
+            </li>
+            <li class="nav-item">
+                <a class="" routerLink="/manage-users/registered-vehicles" routerLinkActive="active">Registered Vehicles</a>
+            </li>
+          </ul>
+          <ul class="nav nav-tabs" role="tablist" *ngIf="showNavbar == 'movements'">
+            <li class="nav-item">
+              <a class="" routerLink="/movements/financial" routerLinkActive="active">Financial</a>
+            </li>
+            <li class="nav-item">
+              <a class="" routerLink="/movements/employees" routerLinkActive="active">Employees</a>
+            </li>
+            <li class="nav-item">
+              <a class="" routerLink="/movements/customers" routerLinkActive="active">Customers</a>
+            </li>
+          </ul>
+          <div class="float-xs-right">
+            <a *ngIf="showNewLotBtn && (userService.labelRole() != 'Tow Truck Driver' && userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() != 'Customer Support')" routerLink="/inventory/parking-lot/new" class="btn button-success button-new-lot ">New Lot</a>
+            <a *ngIf="showNewPSOBtn && (userService.labelRole() != 'Tow Truck Driver' && userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() != 'Customer Support')" routerLink="/inventory/pso/new" class="btn button-success button-new-lot ">New PSO</a>
+            <a *ngIf="showNewCouponBtn && (userService.labelRole() !== 'Customer Support')" routerLink="/inventory/coupons/new" class="btn button-success button-new-lot">New Coupon</a>
+          </div>
+        </div>
+      </header>
+      

@@ -1,0 +1,70 @@
+<navigation></navigation>
+<section class="main">
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active">
+      <div class="header-main-wrapper">
+        <div class="float-xs-left">
+          <h3 class="text-uppercase">Parking Lots</h3>
+        </div>
+        <div class="float-xs-right">
+          <input class="form-control input-search" type="search" name="search" placeholder="Search" value="" (keyup)="search($event.target.value)">
+        </div>
+      </div>
+      <table class="table table-wrapper parking-lot-table general-wrapper">
+        <thead *ngIf="parkingLots.length != 0 || messageBlankState">
+          <tr>
+            <th>PSO
+              <order-column [list]="parkingLots" attr="pso.name"></order-column>
+            </th>
+            <th>Name/Address
+              <order-column [list]="parkingLots" attr="name"></order-column>
+            </th>
+            <th>Parking Capacity
+              <order-column [list]="parkingLots" attr="spotsNumber" type="number"></order-column>
+            </th>
+            <th>DTP Spots</th>
+            <th *ngIf="userService.labelRole() != 'Tow Truck Driver' && userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() !== 'Customer Support'"> </th>
+          </tr>
+        </thead>
+        <tbody *ngIf="parkingLots.length > 0">
+          <tr *ngFor="let parkingLot of parkingLots | paginate: { itemsPerPage: 20, currentPage: p }">
+            <td>
+              <span class="pso-sigla">{{initialLetterForPSO(parkingLot)}}</span> {{parkingLot.pso.name}}
+            </td>
+            <td>
+              <div class="name-td">{{parkingLot.name}}</div>
+              <div class="address-td"><i class="fa fa-map-marker" aria-hidden="true"></i> {{parkingLot.address}}</div>
+            </td>
+            <td><span class="number-td">{{parkingLot.spotsNumber}}</span></td>
+            <td><span class="number-td">{{parkingLot.DTPSpotsNumber()}}</span></td>
+            <td *ngIf="userService.labelRole() != 'Tow Truck Driver' && userService.labelRole() != 'Parking Lot Monitor' && userService.labelRole() !== 'Customer Support'">
+              <a routerLink="/inventory/parking-lot/detail/{{parkingLot.id}}" class="btn button-success button-details">Details</a>
+              <a routerLink="/inventory/parking-lot/{{parkingLot.id}}" class="btn button-secondary button-edit-lot">Edit Lot</a>
+              <a (click)="deleteLot(parkingLot.id)" class="button-trash"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
+            <td *ngIf="userService.labelRole() == 'Tow Truck Driver' || userService.labelRole() == 'Parking Lot Monitor'">
+              <a routerLink="/inventory/parking-lot/detail/{{parkingLot.id}}" class="btn button-primary btn-more-detail-dark">More Details</a>
+            </td>
+          </tr>
+        </tbody>
+        <tbody *ngIf="parkingLots.length == 0">
+          <tr>
+            <td class="special-td" colspan="5">
+              <img src="../../public/images/parking_lots_bs.svg" alt="" />
+              <div *ngIf="!messageBlankState">
+                <span>There are not parking lots registered</span> <br>
+                <span>Start creating a new one!</span><br>
+                <a routerLink="/inventory/parking-lot/new" href="#" class="btn button-success mt-1 text-uppercase">New Parking Lot</a>
+              </div>
+              <div *ngIf="messageBlankState">
+                <span>No parking lots found.</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination-controls *ngIf="parkingLots.length > 0" class="pagination-wrapper" (pageChange)="p = $event" previousLabel="Prev" nextLabel="Next"></pagination-controls>
+    </div>
+  </div>
+</section>

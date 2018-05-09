@@ -653,7 +653,7 @@ div.charge-payment-modal {
 }
 
 .credit-card-icons {
-  background: url('../images/credit-card-sprite.png') no-repeat;
+  background: url('assets/images/credit-card-sprite.png') no-repeat;
 	background-size: 92px 66px;
 	width: 24px;
 	height: 17px;
@@ -700,7 +700,7 @@ div.charge-payment-modal {
   .form-control {padding-left: 45px;}
   &:after {
     content: '';
-    background: url('../images/credit-card-sprite.png') no-repeat;
+    background: url('assets/images/credit-card-sprite.png') no-repeat;
     background-position: -5px -56px;
     background-size: 92px 66px;
     display: inline-block;
