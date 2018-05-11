@@ -1,0 +1,15 @@
+<div class="login-wrapper">
+    <div class="login-image">
+      <img src="assets/images/dtp-logo-letters.png" alt="" />
+    </div>
+    <form class="form login-form-wrapper general-wrapper" (ngSubmit)="onSubmit(username.value, password.value)">
+      <div *ngIf="alertMessage != ''" class="error alert alert-danger">
+        {{alertMessage}}
+      </div>
+      <h2>Log in into your account</h2>
+      <input class="form-control" type="text" name="username" placeholder="Username" #username>
+      <input class="form-control" type="password" name="password" placeholder="Password" #password>
+      <input class="text-uppercase btn button-login" type="submit" value="Log In" [disabled]="!loginEnabled">
+    </form>
+  </div>
+  

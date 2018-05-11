@@ -1,11 +1,12 @@
 import { Observable } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SecurityService {
-    apiURL : string = process.env.API_URL;
-    presharedToken : string = process.env.API_PRESHARED_TOKEN;
+    apiURL: string = environment.SERVICE_URL;
+    presharedToken : string = environment.API_PRESHARED_TOKEN;
 
     constructor(private http: Http) {}
 

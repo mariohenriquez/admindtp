@@ -4,6 +4,7 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { SecurityService } from './security.service';
 import { Observable } from 'rxjs/Rx';
 import { User } from '../model/user';
+import { environment } from '../../environments/environment';
 
 var jwtDecode = require('jwt-decode');
 
@@ -11,7 +12,7 @@ var jwtDecode = require('jwt-decode');
 export class UserService {
 
   private loggedIn = false;
-  private apiURL: string = process.env.API_URL;
+  apiURL: string = environment.SERVICE_URL;
 
   constructor(private http: Http, private securityService: SecurityService) {
     this.loggedIn = !!localStorage.getItem('UserJWT');

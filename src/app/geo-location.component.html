@@ -1,0 +1,36 @@
+<img class="lot-location-img" (click)="openModal($event)" width="270" height="80" src="https://maps.googleapis.com/maps/api/staticmap?center={{selectedLatitude}},{{selectedLongitude}}&size=270x80&maptype=satellite&zoom=18&markers={{selectedLatitude}},{{selectedLongitude}}&scale=2&key={{API_KEY}}" alt="google image">
+
+<div *ngIf="viewOnly == false" [ngClass]="{ 'show': modalVisible }" class="modal geo-location-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="float-xs-left">
+          <h6 class="text-uppercase">Select Geo-Location</h6>
+        </div>
+        <div class="float-xs-right">
+          <div class="close-lot" (click)="closeModal()">
+            <span class="line-close line-1"></span>
+            <span class="line-close line-2"></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="find-wrapper">
+          <input #box type="search" class="search-input form-control" (keyup)="searchInput = box.value;"/>
+          <button [disabled]="searching" class="btn button-primary find-button text-uppercase" (click)="findLocations()">Find</button>
+        </div>
+        <div *ngIf="searchErrorMessage != null" class="error">{{searchErrorMessage}}</div>
+        <sebm-google-map (mapClick)="locationChanged($event)"[disableDefaultUI]="false" [mapTypeControl]="true" [zoom]="15" [latitude]="innerLatitude" [longitude]="innerLongitude" [streetViewControl]="false">
+            <sebm-google-map-marker [latitude]="innerLatitude" [longitude]="innerLongitude"></sebm-google-map-marker>
+        </sebm-google-map>
+      </div>
+      <div class="modal-footer">
+        <div class="float-xs-left">
+          <span>Pick in the map to select your Geo-Location</span>
+        </div>
+        <button type="button" class="btn button-success button-save-geolocation text-uppercase" (click)="saveChanges()">Save Geo-Location</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div class="modal-backdrop fade" (click)="closeModal()" *ngIf="modalVisible" [ngClass]="{ 'show': modalVisible}"></div>

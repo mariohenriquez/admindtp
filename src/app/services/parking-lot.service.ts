@@ -9,13 +9,14 @@ import { SecurityService } from './security.service';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs/Rx';
 import { Pricing } from '../model/pricing';
+import { environment } from '../../environments/environment';
 // import 'rxjs/Rx';
 import 'rxjs/add/operator/map'
 
 
 @Injectable()
 export class ParkingLotService {
-    apiURL: string = process.env.API_URL;
+    apiURL: string = environment.SERVICE_URL;
 
     constructor(private http: Http, private securityService: SecurityService, private userService: UserService) { }
 

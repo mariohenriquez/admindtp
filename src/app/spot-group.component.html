@@ -1,0 +1,14 @@
+<div class="col-sm-1 stops-widht">
+    <label class="text-uppercase lb-light" for="">Spots</label>
+    <input [textMask]="{mask: mask, guide:false}" class="form-control spot-group-input" type="text" name="spotGroup" [(ngModel)]="spotGroup.spotsNumber">
+    <a *ngIf="spotGroup.trashBtn" class="button-trash" (click)="delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+  </div>
+  <div class="col-sm-11 lot-list-width">
+    <ul class="lot-form-list">
+      <availability-rule *ngFor="let rule of spotGroup.rules" [rule]="rule" (onDelete)="deleteRule($event)"></availability-rule>
+    </ul>
+    <div class="link-add-new-content-wrapper">
+      <a href="#" (click)="addNewRule()">Add new rule</a>
+    </div>
+  </div>
+  

@@ -1,0 +1,160 @@
+<navigation></navigation>
+<section class="main">
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div class="tab-pane active" id="inventory" role="tabpanel">
+      <div class="header-main-wrapper">
+        <div *ngIf="alertMessage != ''" class="error alert alert-danger">
+          {{alertMessage}}
+        </div>
+        <div class="float-xs-left">
+          <a routerLink="/inventory/parking-lots">
+            <img class="back-img-btn" src="../../public/images/arrow-left.png" alt="" />
+            <h3 class="text-uppercase">{{parkingLot.name || 'New Lot'}}</h3>
+          </a>
+        </div>
+        <div class="float-xs-right" *ngIf="isNewLot() == false">
+          <button type="submit" class="btn button-success button-create-lot text-uppercase" [disabled]="!parkingForm.form.valid" (click)="update()">Update Lot</button>
+        </div>
+
+        <div class="float-xs-right" *ngIf="isNewLot()">
+          <button type="submit" class="btn button-success button-create-lot text-uppercase" [disabled]="!parkingForm.form.valid" (click)="create()">Create Lot</button>
+        </div>
+      </div>
+      <div class="lot-form general-wrapper">
+        <form class="general-container row no-margin" #parkingForm="ngForm" (ngSubmit)="onSubmit()">
+          <div class="left-content lot-general-right-content">
+            <div class="row no-margin">
+              <div class="col-sm-12 form-group">
+                <label class="text-uppercase lb-dark" for="">Lot Information</label>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-uppercase lb-light" for="">Lot Name</label>
+                <input [ngClass]="{'no-error': name.errors && !(name.dirty || name.touched)}" type="text" class="form-control" name="name" [(ngModel)]="parkingLot.name" #name="ngModel" required>
+                <div *ngIf="name.errors && (name.dirty || name.touched)" class="error">
+                  Lot Name is required.
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-uppercase lb-light" for="">Address</label>
+                <textarea [ngClass]="{'no-error': address.errors && !(address.dirty || address.touched)}" class="form-control" name="address" [(ngModel)]="parkingLot.address" #address="ngModel" cols="30" rows="6" required></textarea>
+                <div *ngIf="address.errors && (address.dirty || address.touched)" class="error">
+                  Address is required.
+                </div>
+              </div>
+              <div class="col-sm-12 form-group">
+                <geo-location (locationUpdated)="locationUpdated($event)" [latitude]="parkingLot.latitude" [longitude]="parkingLot.longitude" class="parking-lot-location-control"></geo-location>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-uppercase lb-light" for="">PSO (Parking Space Owner)</label>
+                <p-dropdown class="select-dropdown" name="pso" [(ngModel)]="parkingLot.pso.name" [ngModelOptions]="{standalone: true}" [options]="psos" [style]="{'width':'100%'}"></p-dropdown>
+              </div>
+              <div class="col-sm-12 form-group">
+                <label class="text-uppercase lb-light" for="">Parking Capacity</label>
+                <input type="number" class="form-control" name="spotsNumber" [(ngModel)]="parkingLot.spotsNumber" #spotsNumber="ngModel" required>
+                <div *ngIf="spotsNumber.errors && (spotsNumber.dirty || spotsNumber.touched)" class="error">
+                  Parking Capacity is required.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right-content availability-right-content">
+            <div class="avaible-spots-wrapper">
+              <div class="nav-tab-wrapper">
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 1}" class="text-uppercase active" (click)="btnTabContent(1)" >Availability Rule</a>
+                  </li>
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 4}" class="text-uppercase" (click)="btnTabContent(4)" >Pricing</a>
+                  </li>
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 2}" class="text-uppercase" (click)="btnTabContent(2)" >Blackout</a>
+                  </li>
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 3}" class="text-uppercase" (click)="btnTabContent(3)" >Pictures</a>
+                  </li>
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 5}" class="text-uppercase" (click)="btnTabContent(5)" >Contact</a>
+                  </li>
+                  <li class="nav-item">
+                    <a [ngClass]="{'active': showTabContent == 6}" class="text-uppercase" (click)="btnTabContent(6)" >Additional Information</a>
+                  </li>
+                </ul>
+                <div class="float-xs-right" *ngIf="showTabContent == 1">
+                  <a href="#" (click)="addSpot()" class="btn text-uppercase button-primary button-add-spots text-uppercase">Add Spots Group</a>
+                </div>
+                <div class="float-xs-right" *ngIf="showTabContent == 2">
+                  <a href="#" (click)="addBlackout()" class="btn text-uppercase button-primary button-add-spots text-uppercase">New Blackout</a>
+                </div>
+                <div class="float-xs-right" *ngIf="showTabContent == 5">
+                  <a href="#" (click)="addContact()" class="btn text-uppercase button-primary button-add-spots text-uppercase">Add Contact</a>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content spost-form-list">
+              <div [ngClass]="{'active': showTabContent == 1}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 1">
+                <spot-group *ngFor="let spotGroup of parkingLot.spotGroups" [spotGroup]="spotGroup" (onDelete)="deleteSpotGroup($event)"></spot-group>
+              </div>
+              <div  [ngClass]="{'active': showTabContent == 2}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 2">
+                <div>
+                  <blackout *ngFor="let blackout of parkingLot.blackouts" [blackout]="blackout" (onDeleteBlackout)="deleteBlackout($event)"></blackout>
+                </div>
+                <div [ngClass]="{'hidden':parkingLot.blackouts.length > 0}" class="blank-state-wrapper">
+                  <div class="">
+                    <img src="../../public/images/blackout_bs.svg" alt="" />
+                    <span>There aren't blackouts registered.<br> Start adding a new one.</span> <br>
+                    <a (click)="addBlackout()" class="btn text-uppercase button-primary button-add-spots text-uppercase mt-1" href="#">New Blackout</a>
+                  </div>
+                </div>
+              </div>
+              <div [ngClass]="{'active': showTabContent == 3}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 3">
+                  <image-drop *ngFor="let file of parkingLot.files; let i = index;" [file]="file" (onDelete)="removePicture(i)" (onSelect)="addFile($event)" [box]="allFilesSelected()" firstTitle="Drag and Drop your picture here" secondTitle="You can attach whatever kind of images."></image-drop>
+              </div>
+              <div [ngClass]="{'active': showTabContent == 4}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 4">
+                <pricing [pricing]="parkingLot.pricing"></pricing>
+              </div>
+              <div [ngClass]="{'active': showTabContent == 5}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 5">
+                <div class="main-pane margin">
+                  <div *ngIf="parkingLot.contacts.length == 0" class="blank-state-wrapper">
+                    <div class="">
+                      <img src="../../public/images/contact_bs.svg" alt="" />
+                      <span>There aren't contacts registered.<br> Start adding a new one.</span> <br>
+                      <a (click)="addContact()" class="btn text-uppercase button-primary button-add-spots text-uppercase mt-1" href="#">Add Contact</a>
+                    </div>
+                  </div>
+                  <contact *ngFor="let contact of parkingLot.contacts; let i = index" [contact]="contact" [index]="i" (onDelete)="deleteContact($event)"></contact>
+                  <div class="link-add-new-content-wrapper">
+                    <a *ngIf="parkingLot.contacts.length != 0" (click)="addContact()">Add another contact</a>
+                  </div>
+                </div>
+              </div>
+              <div [ngClass]="{'active': showTabContent == 6}" class="tab-pane spost-list-wrapper" *ngIf="showTabContent == 6">
+                <div class="main-pane margin">
+                  <div class="row contact-tab-wrapper">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                        <label for="" class="text-uppercase lb-light">Additional Information</label>
+                        <textarea class="form-control" [(ngModel)]="parkingLot.aditionalInformation" name="aditionalInformation" id="" cols="30" rows="5"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                        <label for="" class="text-uppercase lb-light">Location Spaces</label>
+                        <textarea class="form-control" [(ngModel)]="parkingLot.locationSpaces" name="locationSpaces" id="" cols="30" rows="5"></textarea>
+                        </div>
+
+                         <div class="form-group">
+                        <label for="" class="text-uppercase lb-light">Snow Events</label>
+                        <textarea class="form-control" [(ngModel)]="parkingLot.snowEvent" name="snowEvents" id="" cols="30" rows="5"></textarea>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

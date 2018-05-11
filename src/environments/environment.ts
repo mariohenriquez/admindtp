@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  SERVICE_URL: 'https://api-dev.downtimeparking.com/api',
+  API_PRESHARED_TOKEN: 'abcdefghijk',
+  APP_BUCKET_NAME: 'dtp-assets-development'
 };

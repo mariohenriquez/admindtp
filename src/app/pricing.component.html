@@ -1,0 +1,267 @@
+<div class="pricing-lot-wrapper">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="hourly-active" type="checkbox" value="None" name="check" class="check-ios" (change)="pricing.hourly = $event.target.checked"
+                    [checked]="pricing.hourly" />
+                <label for="hourly-active"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Hourly</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" (keyup)="calculateMaxPrice()" [(ngModel)]="pricing.hourlyPrice" name="hourlyPrice"
+                    ng-reflect-name="hourlyPrice" ng-reflect-model="1" #hourlyPrice="ngModel" required>
+            </div>
+            <div class="custom-control-checkbox" style="margin-top:5px">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" (change)="pricing.hourlyHasDailyMax = $event.target.checked; calculateMaxPrice()" [checked]="pricing.hourlyHasDailyMax">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">Hourly Max Charge</span>
+                </label>
+            </div>
+            <span class="hourly-max-price custom-control-description">{{maxPrice | currency:'USD':true:'1.2-2' }}</span>
+            <div *ngIf="hourlyPrice.errors && (hourlyPrice.dirty || hourlyPrice.touched)" class="error">
+                Hourly is required.
+            </div>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized">
+            <label class="lb-light">MAX PRICE</label>
+            <p-dropdown class="select-dropdown" [(ngModel)]="selectedMaxPriceHour" [options]="hours" (onChange)="setDailyMaxPrice($event)"
+                [disabled]="!pricing.hourlyHasDailyMax"></p-dropdown>
+        </div>
+
+        <div class="col-xs-1 col-xs-1-customized">
+            <label class="lb-light">MAX TIME</label>
+            <p-dropdown class="select-dropdown" [(ngModel)]="selectedMaxTimeHour" [options]="hours" (onChange)="setDailyMaxTime($event)"
+                [disabled]="!pricing.hourlyHasDailyMax"></p-dropdown>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="daily-active" type="checkbox" value="None" name="check" class="check-ios" (change)="pricing.daily = $event.target.checked"
+                    [checked]="pricing.daily" />
+                <label for="daily-active"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Daily</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.dailyPrice" name="dailyPrice" [disabled]="pricing.hourlyHasDailyMax"
+                    #dailyPrice="ngModel" required>
+            </div>
+            <div *ngIf="dailyPrice.errors && (dailyPrice.dirty || dailyPrice.touched)" class="error">
+                Daily is required.
+            </div>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized">
+            <label class="lb-light">START</label>
+            <p-dropdown class="select-dropdown" [ngModelOptions]="{standalone: true}" [(ngModel)]="pricing.dailyStartHour" [options]="clock"
+                [disabled]="pricing.hourlyHasDailyMax" [style]="{'width': '113px'}"></p-dropdown>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized">
+            <label class="lb-light">END</label>
+            <p-dropdown class="select-dropdown" [ngModelOptions]="{standalone: true}" [(ngModel)]="pricing.dailyEndHour" [options]="clock"
+                [disabled]="pricing.hourlyHasDailyMax" [style]="{'width': '113px'}"></p-dropdown>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="overnight-active" type="checkbox" value="None" name="overnight" class="check-ios" (change)="pricing.overnight = $event.target.checked"
+                    [checked]="pricing.overnight" />
+                <label for="overnight-active"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Overnight</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.overnightPrice" name="overnightPrice" #overnightPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="overnightPrice.errors && (overnightPrice.dirty || overnightPrice.touched)" class="error">
+                Overnight is required.
+            </div>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized">
+            <label class="lb-light">START</label>
+            <p-dropdown class="select-dropdown" [ngModelOptions]="{standalone: true}" [(ngModel)]="pricing.overnightStartHour" [options]="clock"
+                [style]="{'width': '113px'}"></p-dropdown>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized" style="margin-left:-12px">
+            <label class="lb-light midnight">MIDNIGHT</label>
+        </div>
+        <div class="col-xs-1 col-xs-1-customized" style="margin-left:-30px">
+            <label class="lb-light">END</label>
+            <p-dropdown class="select-dropdown" [ngModelOptions]="{standalone: true}" [(ngModel)]="pricing.overnightEndHour" [options]="clock"
+                [style]="{'width': '113px'}"></p-dropdown>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="twentyfour-active" type="checkbox" value="None" name="twentyfour" class="check-ios" (change)="pricing.twentyFour = $event.target.checked"
+                    [checked]="pricing.twentyFour" />
+                <label for="twentyfour-active"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">24 Hours</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.twentyFourPrice" name="twentyFourPrice" #twentyFourPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="twentyFourPrice.errors && (twentyFourPrice.dirty || twentyFourPrice.touched)" class="error">
+                24 Hours is required.
+            </div>
+        </div>
+    </div>
+    <hr class="hr-special">
+     <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="weekendFriSunActive" type="checkbox" value="None" name="weekendFriSun" class="check-ios" (change)="pricing.weekendFriSun = $event.target.checked"
+                    [checked]="pricing.weekendFriSun" />
+                <label for="weekendFriSunActive"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Weekend (Fri-Sun)</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.weekendFriSunPrice" name="weekendFriSunPrice" #weekendFriSunPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="weekendFriSunPrice.errors && (weekendFriSunPrice.dirty || weekendFriSunPrice.touched)" class="error">
+                Weekend is required.
+            </div>
+        </div>
+    </div>
+    <hr class="hr-special">
+     <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="weekendFriMonActive" type="checkbox" value="None" name="weekendFriMon" class="check-ios" (change)="pricing.weekendFriMon = $event.target.checked"
+                    [checked]="pricing.weekendFriMon" />
+                <label for="weekendFriMonActive"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Weekend (Fri-Mon)</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.weekendFriMonPrice" name="weekendFriMonPrice" #weekendFriMonPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="weekendFriMonPrice.errors && (weekendFriMonPrice.dirty || weekendFriMonPrice.touched)" class="error">
+                Weekend is required.
+            </div>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="weeklyMonToFriActive" type="checkbox" value="None" name="weeklyMonToFri" class="check-ios" (change)="pricing.weeklyMonToFri = $event.target.checked"
+                    [checked]="pricing.weeklyMonToFri" />
+                <label for="weeklyMonToFriActive"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Weekly (5 days)</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.weeklyMonToFriPrice" name="weeklyMonToFriPrice" #weeklyMonToFriPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="weeklyMonToFriPrice.errors && (weeklyMonToFriPrice.dirty || weeklyMonToFriPrice.touched)" class="error">
+                Weekend is required.
+            </div>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="weeklySevenDaysActive" type="checkbox" value="None" name="weeklySevenDays" class="check-ios" (change)="pricing.weeklySevenDays = $event.target.checked"
+                    [checked]="pricing.weeklySevenDays" />
+                <label for="weeklySevenDaysActive"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Weekly (7 days)</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.weeklySevenDaysPrice" name="weekendPrice" #weekendPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="weekendPrice.errors && (weekendPrice.dirty || weekendPrice.touched)" class="error">
+                Weekend is required.
+            </div>
+        </div>
+    </div>
+    <hr class="hr-special">
+    <div class="form-group row no-margin">
+        <div class="col-xs-1">
+            <div class="switch-wrapper">
+                <input id="monthlyActive" type="checkbox" value="None" name="monthly" class="check-ios" (change)="pricing.monthly = $event.target.checked"
+                    [checked]="pricing.monthly" />
+                <label for="monthlyActive"></label>
+                <span></span>
+            </div>
+        </div>
+        <label for="" class="col-xs-2 col-form-label lb-dark">Monthly</label>
+        <div class="col-xs-2">
+            <label class="lb-light">PRICE</label>
+            <div class="input-group">
+                <span class="input-group-addon">$</span>
+                <input class="form-control" type="number" [(ngModel)]="pricing.monthlyPrice" name="monthlyPrice" #monthlyPrice="ngModel"
+                    required>
+            </div>
+            <div *ngIf="monthlyPrice.errors && (monthlyPrice.dirty || monthlyPrice.touched)" class="error">
+                Monthly is required.
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <label class="lb-light" style="margin-bottom:0">START</label>
+            <div class="custom-control-checkbox">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" (change)="pricing.monthlyFirstDayOfMonth = $event.target.checked" [checked]="pricing.monthlyFirstDayOfMonth">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">1st day of month</span>
+                </label>
+            </div>
+            <div class="custom-control-checkbox">
+                <label class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" (change)="pricing.monthlyFifteenthDayOfMonth = $event.target.checked" [checked]="pricing.monthlyFifteenthDayOfMonth">
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">15th day of month</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

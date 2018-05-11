@@ -1,0 +1,80 @@
+<li [ngClass]="{'disabled': rule.enabled == false}" class="lot-list-wrapper">
+    <div class="day-wrapper">
+      <div class="custom-control-radio">
+        <label class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" (change)="rule.kind = 'WEEK_DAYS'" [checked]="rule.kind == 'WEEK_DAYS'">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Week Days</span>
+        </label>
+        <label class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" (change)="rule.kind = 'CUSTOM_DAY'" [checked]="rule.kind == 'CUSTOM_DAY'">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Custom Day</span>
+        </label>
+  
+         <label class="custom-control custom-radio">
+          <input type="radio" class="custom-control-input" (change)="rule.kind = 'HOLIDAY'" [checked]="rule.kind == 'HOLIDAY'">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Holidays</span>
+        </label>
+      </div>
+      <div class="toogle-days-wrapper">
+        <div *ngIf="rule.kind == 'CUSTOM_DAY'" class="datepicker-wrapper">
+          <p-calendar class="datepicker-select" [(ngModel)]="rule.customDay" dateFormat="M dd yy"></p-calendar>
+        </div>
+        <div *ngIf="rule.kind == 'WEEK_DAYS'"  class="">
+          <div class="btn-group week-btns" data-toggle="buttons">
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Mo')}">
+              <input type="checkbox" (change)="toggleWeekDays('Mo')"> Mo
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Tu')}">
+              <input type="checkbox"(change)="toggleWeekDays('Tu')" autocomplete="off"> Tu
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('We')}">
+              <input type="checkbox" (change)="toggleWeekDays('We')" autocomplete="off"> We
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Th')}">
+              <input type="checkbox" (change)="toggleWeekDays('Th')" autocomplete="off"> Th
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Fr')}">
+              <input type="checkbox" (change)="toggleWeekDays('Fr')" autocomplete="off"> Fr
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Sa')}">
+              <input type="checkbox" (change)="toggleWeekDays('Sa')" autocomplete="off"> Sa
+            </label>
+            <label class="btn button-week" [ngClass]="{'active': isDaySelected('Su')}">
+              <input type="checkbox" (change)="toggleWeekDays('Su')" autocomplete="off"> Su
+            </label>
+          </div>
+        </div>
+        <div *ngIf="rule.kind == 'HOLIDAY'" class="holidays-wrapper">
+          <p-multiSelect [options]="holidays" [(ngModel)]="rule.holidays"></p-multiSelect>
+        </div>
+      </div>
+    </div>
+    <div class="time-wrapper">
+      <div class="time-control-wrapper">
+        <div class="time-ico-wrapper"></div> <span class="time-text">From {{fromHour()}} to {{toHour()}}</span>
+        <div class="custom-control-checkbox">
+          <label class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" (change)="allDayChanged($event)" [checked]="rule.allDay">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">All Day</span>
+          </label>
+        </div>
+      </div>
+      <p-slider [ngClass]="{'disabled': rule.allDay}" [(ngModel)]="selectedRange" [min]="0" [max]="maxRangeValue" [style]="{'width':'100%'}" [range]="true" (onChange)="adjustHours($event)"></p-slider>
+    </div>
+    <div class="last-wrapper text-xs-right">
+      <div class="close-lot" (click)="delete()">
+        <span class="line-close line-1"></span>
+        <span class="line-close line-2"></span>
+      </div>
+      <div class="switch-wrapper">
+            <input id="{{rule.id}}" type="checkbox" value="None" name="check" class="check-ios" (change)="rule.enabled = $event.target.checked" [checked]="rule.enabled" />
+            <label [attr.for]="rule.id"></label>
+            <span></span>
+        </div>
+    </div>
+  </li>
+  

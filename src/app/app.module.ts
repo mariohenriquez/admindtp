@@ -17,20 +17,20 @@ import { ReservationTypesService } from '../app/services/reservation-type.servic
 import { PaymentInformationService } from '../app/services/payment-information.service';
 import { ParkingLotsComponent } from './parking-lots.component';
 // import { AvailabilityComponent } from '../app/pages/availability.component';
-// import { ParkingLotComponent } from '../app/pages/parking-lot.component';
-// import { SpotGroupComponent } from '../app/partials/spot-group.component';
-// import { AvailabilityRuleComponent } from '../app/partials/availability-rule.component';
+import { ParkingLotComponent } from './parking-lot.component';
+import { SpotGroupComponent } from './spot-group.component';
+import { AvailabilityRuleComponent } from './availability-rule.component';
 // import { AvailabilityRangeComponent } from '../app/partials/availability-range.component';
 // import { AvailabilityResultComponent } from '../app/partials/availability-result.component';
 // import { AvailabilityResultDetailComponent } from '../app/partials/availability-result-detail.component';
-// import { PricingComponent } from '../app/partials/pricing.component';
+import { PricingComponent } from './pricing.component';
 import { NavigationComponent } from './navigation.component';
 // import { PricingDetailComponent } from '../app/partials/pricing-detail.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from '../app/app.component';
-// import { LoginComponent } from '../app/pages/login.component';
+import { LoginComponent } from './login.component';
 // import { InvitationComponent } from '../app/pages/invitation.component';
 // import { ResetPasswordComponent } from '../app/pages/reset-password.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -38,16 +38,16 @@ import { CalendarModule, SliderModule, DropdownModule, MultiSelectModule, AutoCo
 import { HttpModule, JsonpModule, XHRBackend } from '@angular/http';
 import { LoggedInGuard } from '../app/services/logged-in-guard';
 import { AuthenticationConnectionBackend } from '../lib/authentication-connection-backend';
-// import { BlackoutComponent } from '../app/partials/blackout.component';
+import { BlackoutComponent } from './blackout.component';
 // import { DetailComponent } from '../app/pages/detail.component';
 // import { PSOSComponent } from '../app/pages/psos.component';
 // import { PSOComponent } from '../app/pages/pso.component';
-// import { ContactComponent } from '../app/partials/contact.component';
+import { ContactComponent } from './contact.component';
 // import { FileDropComponent } from '../app/partials/file-drop.component';
 // import { MoreComponent } from '../app/pages/more.component';
-// import { GeoLocationComponent } from '../app/partials/geo-location.component';
+import { GeoLocationComponent } from './geo-location.component';
 // import { AgmCoreModule } from 'angular2-google-maps/core';
-// import { ImageDropComponent } from '../app/partials/image-drop.component';
+import { ImageDropComponent } from './image-drop.component';
 // import { ReservationsComponent } from '../app/pages/reservations.component';
 // import { ReservationComponent } from '../app/pages/reservation.component';
 // import { NewReservationComponent } from '../app/pages/reservation-new.component';
@@ -94,26 +94,26 @@ import {Ng2PaginationModule} from 'ng2-pagination'; // <-- import the module
     ],
     declarations: [
         AppComponent,
-        // LoginComponent,
+        LoginComponent,
         NavigationComponent,
         ParkingLotsComponent,
-        // ParkingLotComponent,
-        // GeoLocationComponent,
-        // SpotGroupComponent,
-        // AvailabilityRuleComponent,
+        ParkingLotComponent,
+        GeoLocationComponent,
+        SpotGroupComponent,
+        AvailabilityRuleComponent,
         // AvailabilityComponent,
         // AvailabilityRangeComponent,
         // AvailabilityResultComponent,
         // AvailabilityResultDetailComponent,
-        // BlackoutComponent,
+        BlackoutComponent,
         // DetailComponent,
         // PSOSComponent,
         // PSOComponent,
-        // ContactComponent,
+        ContactComponent,
         // FileDropComponent,
-        // ImageDropComponent,
+        ImageDropComponent,
         // MoreComponent,
-        // PricingComponent,
+        PricingComponent,
         // PricingDetailComponent,
         // ReservationsComponent,
         // ReservationComponent,
@@ -147,7 +147,7 @@ import {Ng2PaginationModule} from 'ng2-pagination'; // <-- import the module
         ParkingLotService,
         PSOService,
         UserService,
-        // UploadService,
+        UploadService,
         SecurityService,
         HolidayService,
         TimeService,

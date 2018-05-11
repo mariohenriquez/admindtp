@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  SERVICE_URL: 'https://api-dev.downtimeparking.com/api'
 };

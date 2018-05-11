@@ -1,0 +1,67 @@
+<div class="lot-form-list">
+    <div class="lot-list-wrapper blackout-date-wrapper row">
+      <div class="float-xs-left">
+        <div class="custom-control-radio">
+          <label class="custom-control custom-radio">
+            <input type="radio" class="custom-control-input" (change)="inputBlackout.kind = 'DATE_RANGE'" [checked]="inputBlackout.kind == 'DATE_RANGE'">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Time Range</span>
+          </label>
+  
+          <label class="custom-control custom-radio" (change)="holidayDefault()" >
+            <input type="radio" class="custom-control-input" (change)="inputBlackout.kind = 'HOLIDAY'" [checked]="inputBlackout.kind == 'HOLIDAY'">
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">Holidays</span>
+          </label>
+        </div>
+        <div class="stops-widht">
+          <label class="text-uppercase lb-light" for="">Spaces</label>
+          <input class="form-control spot-group-input" type="number" name="spotGroup" [(ngModel)]="inputBlackout.spotsNumber">
+        </div>
+      </div>
+      <div class="float-xs-left">
+        <div  *ngIf="inputBlackout.kind == 'DATE_RANGE'" class="">
+          <div class="datepicker-wrapper">
+            <label class="text-uppercase lb-light" for="">From</label>
+            <div class="datepicker-form-control">
+              <p-calendar class="datepicker-select" dateFormat="M dd yy" [(ngModel)]="inputBlackout.fromDate"></p-calendar>
+              <p-dropdown class="select-dropdown" [options]="hours" [(ngModel)]="inputBlackout.fromStartHour"  [style]="{'width':'105px'}"></p-dropdown>
+            </div>
+          </div>
+          <div class="datepicker-wrapper">
+            <label class="text-uppercase lb-light" for="">To</label>
+            <div class="datepicker-form-control">
+              <p-calendar class="datepicker-select" dateFormat="M dd yy" [(ngModel)]="inputBlackout.toDate"></p-calendar>
+              <p-dropdown class="select-dropdown" [options]="hours" [(ngModel)]="inputBlackout.toEndHour"  [style]="{'width':'105px'}"></p-dropdown>
+            </div>
+          </div>
+        </div>
+        <div  *ngIf="inputBlackout.kind == 'HOLIDAY'" class=" ">
+          <div class="holidays-wrapper">
+            <label class="text-uppercase lb-light" for="">Holidays</label>
+            <p-multiSelect [options]="holidaysList" [(ngModel)]="inputBlackout.holidays"></p-multiSelect>
+          </div>
+          <div class="time-wrapper">
+            <div class="time-control-wrapper">
+              <div class="time-ico-wrapper"></div> <span class="time-text">From {{fromHour()}} to {{toHour()}}</span>
+              <div class="custom-control-checkbox">
+                <label class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" (change)="allDayChanged($event)" [checked]="inputBlackout.allDay">
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">All Day</span>
+                </label>
+              </div>
+            </div>
+            <p-slider [ngClass]="{'disabled': inputBlackout.allDay}" [(ngModel)]="selectedRange" [min]="0" [max]="maxRangeValue" [style]="{'width':'100%'}" [range]="true" (onChange)="adjustHours($event)"></p-slider>
+          </div>
+        </div>  
+      </div>
+      <div class="last-wrapper text-xs-right">
+        <div class="close-lot" (click)="delete()">
+          <span class="line-close line-1"></span>
+          <span class="line-close line-2"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

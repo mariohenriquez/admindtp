@@ -5,11 +5,12 @@ import { SecurityService } from './security.service';
 import { File } from '../model/file';
 import { Contact } from '../model/contact';
 import { ParkingLot } from '../model/parking-lot';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class HolidayService {
 
-    apiURL: string = process.env.API_URL;
+    apiURL: string = environment.SERVICE_URL;
     _holidays: string[] = [
         "Christmas Day",
         "Christmas Eve",

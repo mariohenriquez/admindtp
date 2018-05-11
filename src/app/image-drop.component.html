@@ -1,0 +1,23 @@
+<div class="drag-drop-wrapper drag-drop-images ui-fileupload-content" [ngClass]="{'float-xs-left': box}" *ngIf="!fileSelected()">
+    <input type="file" accept="image/*" id="file" (change)="fileChanged($event)"/>
+    <div class="drag-text" [ngClass]="{'hidden': box}">
+        <img src="assets/images/drag-drop-ico.svg" alt="">
+        <h6>{{firstTitle}}</h6>
+        <span>{{secondTitle}}</span>
+    </div>
+    <div class="add-plus-wrapper" [ngClass]="{'hidden': !box}">
+    </div>
+</div>
+<div *ngIf="fileSelected()" class="ui-fileupload-img float-xs-left">
+  <img crossOrigin="Anonymous" [id]="file.details.name" [ngClass]="{'r': orientation == 1, 'rotation-3': orientation == 3, 'rotation-6': orientation == 6, 'rotation-8': orientation == 8, 'no-opacity': widthProgressBar == 100 }" class="image-attached" [src]="file.objectURL || file.details.path" alt="thumbnail">
+  <div class="float-xs-right">
+    <div class="close-lot" (click)="delete()">
+      <span class="line-close line-1"></span>
+      <span class="line-close line-2"></span>
+    </div>
+  </div>
+
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" [ngStyle]="{'width': widthProgressBar+'%'}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class=" contact-tab-wrapper">
+    <div class="header-tab-border">
+        <h3 class="text-uppercase">Contact {{index+1}}</h3>
+        <div (click)="delete()" class="float-xs-right">
+            <div class="close-lot">
+                <span class="line-close line-1"></span>
+                <span class="line-close line-2"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label for="" class="text-uppercase lb-light">Contact Name</label>
+            <input [ngClass]="{'no-error': contactName.errors && !(contactName.dirty || contactName.touched)}" type="text" class="form-control" name="contactName" placeholder="Contact Name" [(ngModel)]="contact.name" #contactName="ngModel" required>
+            <div *ngIf="contactName.errors && (contactName.dirty || contactName.touched)" class="error">
+                Contact Name is required.
+            </div>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="" class="text-uppercase lb-light">Email</label>
+            <input [ngClass]="{'no-error': email.errors && !(email.dirty || email.touched)}" type="text" class="form-control" name="email" placeholder="Email"  [(ngModel)]="contact.email" #email="ngModel" required>
+            <div *ngIf="email.errors && (email.dirty || email.touched)" class="error">
+                Email is required.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label for="" class="text-uppercase lb-light">Phone Number</label>
+            <input [ngClass]="{'no-error': phoneNumber.errors && !(phoneNumber.dirty || phoneNumber.touched)}" type="text" class="form-control" name="phoneNumber" placeholder="Phone Number" [(ngModel)]="contact.phoneNumber" #phoneNumber="ngModel" required>
+            <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="error">
+                Phone Number is required.
+            </div>
+        </div>
+        <div class="form-group col-sm-6">
+            <label for="" class="text-uppercase lb-light">Mobile Phone Number</label>
+            <input [ngClass]="{'no-error': mobilePhoneNumber.errors && !(mobilePhoneNumber.dirty || mobilePhoneNumber.touched)}" type="text" class="form-control" name="mobilePhoneNumber" placeholder="Mobile Phone Number" [(ngModel)]="contact.mobilePhoneNumber" #mobilePhoneNumber="ngModel" required>
+            <div *ngIf="mobilePhoneNumber.errors && (mobilePhoneNumber.dirty || mobilePhoneNumber.touched)" class="error">
+                Mobile Phone Number is required.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col-sm-6">
+            <label for="" class="text-uppercase lb-light">Title</label>
+             <input [ngClass]="{'no-error': title.errors && !(title.dirty || title.touched)}" type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="contact.title" #title="ngModel" required>
+            <div *ngIf="title.errors && (title.dirty || title.touched)" class="error">
+                Title is required.
+            </div>
+        </div>
+    </div>
+</div>
